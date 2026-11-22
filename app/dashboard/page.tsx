@@ -56,6 +56,9 @@ export default function DashboardPage() {
   const currentRoadStatusMap = useMemo(() => {
     return simResult.roadStatusByHour?.get(currentHour);
   }, [simResult, currentHour]);
+  const currentEffectiveRiskMap = useMemo(() => {
+    return simResult.effectiveRisksByHour?.get(currentHour);
+  }, [simResult, currentHour]);
 
   // Combined observations including user-submitted field reports
   const allCurrentObservations = useMemo(() => {
@@ -250,6 +253,7 @@ export default function DashboardPage() {
                 }
               }}
               roadStatusMap={currentRoadStatusMap}
+              effectiveRiskMap={currentEffectiveRiskMap}
               satellitePolygons={detectionSnapshot.satellitePolygons}
               probeClusters={detectionSnapshot.probeClusters}
               sensorReadings={detectionSnapshot.sensorReadings}

@@ -55,6 +55,7 @@ interface LeafletMapProps {
   activeRoutePolyline?: [number, number][];
   originalRoutePolyline?: [number, number][];
   roadStatusMap?: Map<string, RoadStatus>;
+  effectiveRiskMap?: Map<string, number>;
   satellitePolygons?: SatelliteFloodPolygon[];
   probeClusters?: ProbeCluster[];
   sensorReadings?: SensorTelemetryReading[];
@@ -168,6 +169,7 @@ export default function LeafletMap({
   activeRoutePolyline,
   originalRoutePolyline,
   roadStatusMap,
+  effectiveRiskMap,
   satellitePolygons = [],
   probeClusters = [],
   sensorReadings = [],
@@ -274,10 +276,35 @@ export default function LeafletMap({
       const history = getRainHistory(scenario, edge.id, simT);
       const forecast = getRainForecast(scenario, edge.id, simT, 24);
       const assessment = calculateRiskScore(edge, history, forecast);
-      map.set(edge.id, { assessment, forecast });
+      const effectiveScore = effectiveRiskMap?.get(edge.id);
+      if (effectiveScore === undefined || effectiveScore === assessment.score) {
+        map.set(edge.id, { assessment, forecast });
+        return;
+      }
+      const level: RiskAssessment["level"] =
+        effectiveScore >= 75
+          ? "severe"
+          : effectiveScore >= 50
+          ? "high"
+          : effectiveScore >= 25
+          ? "moderate"
+          : "low";
+      map.set(edge.id, {
+        assessment: {
+          ...assessment,
+          score: effectiveScore,
+          level,
+          isClosed: effectiveScore >= 85,
+          reason:
+            effectiveScore === 0
+              ? "Verified human clearance; corridor is passable"
+              : assessment.reason,
+        },
+        forecast,
+      });
     });
     return map;
-  }, [scenario, simT]);
+  }, [scenario, simT, effectiveRiskMap]);
 
   // Selected truck's polylines
   const selectedTruck = useMemo(() => {
@@ -313,6 +340,18 @@ export default function LeafletMap({
 
   // Active recommended alternate route calculation
   const recommendedAlternate = useMemo(() => {
+    const isHumanVerifiedClear = (edgeId: string) =>
+      effectiveRiskMap?.get(edgeId) === 0 ||
+      roadStatusMap?.get(edgeId)?.evidence.some(
+        (observation) =>
+          observation.claim === "clear" &&
+          observation.provenance === "human_verified"
+      );
+
+    if (selectedEdgeId && isHumanVerifiedClear(selectedEdgeId)) {
+      return null;
+    }
+
     // Determine target truck: explicitly selected truck OR latest manually rerouted truck
     const targetShipmentCode =
       selectedShipmentCode ||
@@ -396,6 +435,11 @@ export default function LeafletMap({
         ) ||
         decisions.find((d) => d.decision === "REROUTE") ||
         null;
+    }
+
+    // A verified reopen supersedes any cached or historical reroute decision.
+    if (dec?.edgeId && isHumanVerifiedClear(dec.edgeId)) {
+      return null;
     }
 
     // If decision with alternateRoute found, use it!
@@ -508,9 +552,18 @@ export default function LeafletMap({
     if (selectedEdgeId) {
       const edge = EDGES.find((e) => e.id === selectedEdgeId);
       const data = edgeAssessments.get(selectedEdgeId);
+      const status = roadStatusMap?.get(selectedEdgeId);
+      const humanVerifiedClear =
+        effectiveRiskMap?.get(selectedEdgeId) === 0 ||
+        status?.evidence.some(
+          (observation) =>
+            observation.claim === "clear" &&
+            observation.provenance === "human_verified"
+        );
       const isBlocked =
-        data?.assessment.isClosed ||
-        (data?.assessment.score !== undefined && data.assessment.score >= 85);
+        !humanVerifiedClear &&
+        (data?.assessment.isClosed ||
+          (data?.assessment.score !== undefined && data.assessment.score >= 85));
 
       if (edge && isBlocked) {
         const closureRiskMap = new Map<string, number>();
@@ -557,7 +610,7 @@ export default function LeafletMap({
     }
 
     return null;
-  }, [decisions, selectedShipmentCode, selectedEdgeId, simT, edgeAssessments, manualReroutedTrucks, trucks]);
+  }, [decisions, selectedShipmentCode, selectedEdgeId, simT, edgeAssessments, manualReroutedTrucks, trucks, effectiveRiskMap, roadStatusMap]);
 
   // City Node DivIcons (Limited to at most ~8 primary cities per region to keep map free of clutter)
   const nodeIcons = useMemo(() => {
@@ -875,7 +928,11 @@ export default function LeafletMap({
                   lineJoin: "round",
                 }}
                 eventHandlers={{
-                  click: () => onSelectEdge(edge.id),
+                  click: (event) => {
+                    onSelectEdge(edge.id);
+                    const layer = event.target as L.Path & { openPopup: () => void };
+                    layer.openPopup();
+                  },
                 }}
               >
                 <Popup className="clean-popup">

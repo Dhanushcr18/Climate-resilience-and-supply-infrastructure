@@ -19,6 +19,7 @@ export interface MapWrapperProps {
   activeRoutePolyline?: [number, number][];
   originalRoutePolyline?: [number, number][];
   roadStatusMap?: Map<string, RoadStatus>;
+  effectiveRiskMap?: Map<string, number>;
   satellitePolygons?: SatelliteFloodPolygon[];
   probeClusters?: ProbeCluster[];
   sensorReadings?: SensorTelemetryReading[];

@@ -181,6 +181,18 @@ Control-room reports, reopened roads, simulation time, manual reroutes, and driv
 
 The browser also retains a localStorage fallback, but the server database is the source used to synchronize the dashboard and driver portals after refresh or across tabs. The default file-backed database is intended for local/self-hosted deployment. A serverless host with an ephemeral filesystem (for example, a stateless Vercel deployment) should use a managed persistent database and replace `lib/database/simulation.ts`.
 
+### Supabase shared database setup
+
+Install the Supabase packages and set these variables on the server or `.env.local`:
+
+```text
+NEXT_PUBLIC_SUPABASE_URL=https://grruijklfriizvudeane.supabase.co
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=<your-publishable-key>
+SUPABASE_SERVICE_ROLE_KEY=<optional-server-only-key>
+```
+
+Apply `supabase/migrations/20261122100000_create_simulation_state.sql` in the Supabase SQL editor or through the Supabase CLI. Once configured, `/api/simulation-state` writes to Supabase first and keeps the file database only as an offline fallback. A Render persistent disk is not required when Supabase is configured.
+
 ---
 
 ## 6. Quickstart: Running Locally

@@ -122,6 +122,12 @@ export function getEdgeRiskAtTraversal(
   const hourKey = Math.min(72, Math.max(0, Math.floor(tEnter)));
   const effScore = effectiveRisksByHour?.get(hourKey)?.get(edge.id);
 
+  // A verified clearance is authoritative for this edge. It must override
+  // the stale hydrological forecast used to build static closure maps.
+  if (effScore === 0) {
+    return { score: 0, isClosed: false };
+  }
+
   // If fused detection confirmed blocked (>=85) at traversal hour
   if (effScore !== undefined && effScore >= 85) {
     return { score: effScore, isClosed: true };

@@ -122,7 +122,17 @@ export function simulate(params: {
   } = params;
 
   const hasDetection = useDetection || (observations && observations.length > 0) || !!customEffectiveRisks;
-  const cacheKey = `${scenario}_${mode}_${endT}_${agentIntervalH}_${hasDetection ? "det" : "nodet"}_${observations?.length || 0}`;
+  const observationSignature = (observations || [])
+    .map((observation) => [
+      observation.edgeId,
+      observation.claim,
+      observation.receivedAtT,
+      observation.provenance,
+      observation.confidence,
+    ].join(":"))
+    .sort()
+    .join("|");
+  const cacheKey = `${scenario}_${mode}_${endT}_${agentIntervalH}_${hasDetection ? "det" : "nodet"}_${observationSignature}`;
 
   if (simCache.has(cacheKey)) {
     return simCache.get(cacheKey)!;
@@ -247,8 +257,48 @@ export function simulate(params: {
 
   // Step hour by hour through the simulation
   for (let t = 0; t <= endT; t++) {
-    const currentClosedEdges = closedEdgesByHour.get(t) || new Set<string>();
+    const currentClosedEdges = new Set(closedEdgesByHour.get(t) || []);
     const currentRisks = roadRisksByHour.get(t) || new Map<string, RiskAssessment>();
+    const currentEffectiveRisks = effectiveRisksByHour?.get(t);
+    const currentRoadStatuses = roadStatusByHour?.get(t);
+
+    // Verified clear observations are an operational override of both the
+    // static forecast closure set and the effective-risk map.
+    if (currentEffectiveRisks) {
+      currentEffectiveRisks.forEach((score, edgeId) => {
+        if (score === 0) currentClosedEdges.delete(edgeId);
+      });
+    }
+
+    // Returning a rerouted vehicle to its original corridor is only done
+    // after an independently fused clear status, and never for blocked roads.
+    if (currentEffectiveRisks && currentRoadStatuses) {
+      activeStates.forEach((truck) => {
+        if (truck.status === "delivered" || truck.status === "pending") return;
+        const reopenedEdge = truck.originalRoute.edges.find((edge) =>
+          currentRoadStatuses.get(edge.id)?.state === "clear" &&
+          currentEffectiveRisks.get(edge.id) === 0 &&
+          currentRoadStatuses.get(edge.id)?.evidence.some(
+            (observation) => observation.claim === "clear" &&
+              observation.provenance === "human_verified"
+          )
+        );
+        const originalCorridorSafe = truck.originalRoute.edges.every((edge) =>
+          (currentEffectiveRisks.get(edge.id) ?? 100) < 85
+        );
+        if (reopenedEdge && originalCorridorSafe && truck.activeRoute !== truck.originalRoute) {
+          truck.activeRoute = truck.originalRoute;
+          truck.currentEdgeIndex = 0;
+          truck.currentEdgeId = truck.originalRoute.edges[0]?.id || null;
+          truck.fractionOnEdge = 0;
+          truck.status = "in_transit";
+          truck.isBlocked = false;
+          truck.blockedReason = null;
+          truck.lastReplanHour = t;
+          truck.routeChangeCount = (truck.routeChangeCount || 0) + 1;
+        }
+      });
+    }
 
     // 1. In 'agent' mode, run agent decision loop every agentIntervalH
     if (mode === "agent" && t % agentIntervalH === 0) {

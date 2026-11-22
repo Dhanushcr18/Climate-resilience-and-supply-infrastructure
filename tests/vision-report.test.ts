@@ -101,6 +101,7 @@ describe("Milestone D4: Computer Vision & Incident Reporting", () => {
     expect(statusAt17).toBeDefined();
     expect(statusAt17?.state).toBe("clear");
     expect(statusAt17?.probBlocked).toBeLessThan(0.35);
+    expect(sim.effectiveRisksByHour?.get(17)?.get("HAS-MNG")).toBe(0);
 
     // Convoys are not rerouted away from HAS-MNG
     const rerouteOnMng = sim.decisions.find(

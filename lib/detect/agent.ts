@@ -11,7 +11,7 @@ import { RoadStatus } from "./types";
  * - confirmed => 95 (treated as CLOSED >= 85)
  * - probable  => max(forecast score, 70)
  * - watch     => min(84, forecast score + 10)
- * - clear     => forecast score
+ * - clear     => 0 only for a human-verified clear report; otherwise forecast score
  */
 export function buildEffectiveRiskMap(
   forecastRisks: Map<string, RiskAssessment>,
@@ -33,7 +33,10 @@ export function buildEffectiveRiskMap(
     } else if (status.state === "watch") {
       effectiveMap.set(edgeId, Math.min(84, assessment.score + 10));
     } else {
-      effectiveMap.set(edgeId, assessment.score);
+      const hasHumanClear = status.evidence.some(
+        (observation) => observation.claim === "clear" && observation.provenance === "human_verified"
+      );
+      effectiveMap.set(edgeId, hasHumanClear ? 0 : assessment.score);
     }
   });
 

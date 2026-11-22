@@ -60,7 +60,7 @@ export function RoadPopup({ edge, assessment, forecast24h, roadStatus, simT = 0 
   const recentEvidence = roadStatus ? roadStatus.evidence.slice(0, 4) : [];
 
   return (
-    <div className="p-3 text-on-surface min-w-[280px] max-w-[340px] font-body text-xs bg-surface-container-lowest">
+    <div className="road-detail-popup p-3 font-body text-xs" style={{ color: "#191c1f", background: "#ffffff", opacity: 1 }}>
       {/* Header */}
       <div className="flex items-center justify-between border-b border-outline-variant pb-2 mb-2">
         <div>
@@ -100,7 +100,7 @@ export function RoadPopup({ edge, assessment, forecast24h, roadStatus, simT = 0 
 
       {/* Multi-source Fused Incident Detection Section */}
       {roadStatus && (
-        <div className="mb-2.5 p-2 rounded-xl bg-surface-container-high/80 border border-white/10 shadow-inner">
+        <div className="mb-2.5 p-2 rounded-xl border border-slate-200 shadow-inner" style={{ background: "#f8fafc", opacity: 1 }}>
           <div className="flex items-center justify-between mb-1">
             <span className="font-mono text-[10px] text-secondary font-bold uppercase flex items-center gap-1">
               <ShieldCheck className="w-3.5 h-3.5 text-secondary" />
@@ -165,12 +165,13 @@ export function RoadPopup({ edge, assessment, forecast24h, roadStatus, simT = 0 
                 return (
                   <div
                     key={obs.id}
-                    className="p-1.5 rounded-lg bg-surface-container/60 border border-white/5 flex items-start gap-1.5 text-[10px]"
+                    className="p-1.5 rounded-lg border border-slate-200 flex items-start gap-1.5 text-[10px]"
+                    style={{ background: "#ffffff", opacity: 1 }}
                   >
                     <div className="mt-0.5 shrink-0">{getSourceIcon(obs.sourceType)}</div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between gap-1">
-                        <span className="font-mono font-bold capitalize text-white truncate">
+                        <span className="font-mono font-bold capitalize text-slate-900 truncate">
                           {obs.sourceType.replace("_", " ")}
                         </span>
                         <div className="flex items-center gap-1 shrink-0">
@@ -225,7 +226,7 @@ export function RoadPopup({ edge, assessment, forecast24h, roadStatus, simT = 0 
 
       {/* Hydrological Components */}
       <div className="grid grid-cols-2 gap-1.5 text-[10px] my-2 font-mono">
-        <div className="p-1 rounded bg-surface-container border border-white/5 flex items-center space-x-1.5">
+        <div className="p-1 rounded border border-slate-200 bg-slate-50 flex items-center space-x-1.5">
           <Droplets className="w-3 h-3 text-primary shrink-0" />
           <div>
             <div className="text-[8px] text-on-surface-variant">Accumulation</div>
@@ -233,7 +234,7 @@ export function RoadPopup({ edge, assessment, forecast24h, roadStatus, simT = 0 
           </div>
         </div>
 
-        <div className="p-1 rounded bg-surface-container border border-white/5 flex items-center space-x-1.5">
+        <div className="p-1 rounded border border-slate-200 bg-slate-50 flex items-center space-x-1.5">
           <Gauge className="w-3 h-3 text-[#ffd166] shrink-0" />
           <div>
             <div className="text-[8px] text-on-surface-variant">Peak Intensity</div>
@@ -244,7 +245,7 @@ export function RoadPopup({ edge, assessment, forecast24h, roadStatus, simT = 0 
 
       {/* Recommended Alternate section if road is high-risk / closed */}
       {(assessment.score >= 50 || assessment.isClosed) && (
-        <div className="mt-2 p-2 rounded-lg bg-surface-container/90 border border-[#22e3a0]/30 space-y-1">
+        <div className="mt-2 p-2 rounded-lg border border-[#22e3a0]/30 space-y-1" style={{ background: "#f0fdfa" }}>
           <div className="flex items-center justify-between text-[10px] font-mono">
             <span className="text-[#22e3a0] font-bold flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-[#22e3a0] animate-pulse" />
@@ -252,7 +253,7 @@ export function RoadPopup({ edge, assessment, forecast24h, roadStatus, simT = 0 
             </span>
             <span className="text-on-surface-variant text-[9px]">Autonomous Dispatch</span>
           </div>
-          <div className="text-[11px] text-white font-medium">
+          <div className="text-[11px] text-slate-900 font-medium">
             {edge.id === "HAS-MNG"
               ? "Blocked. Recommended alternate for this corridor: via Madikeri (+65 min, risk 46% - Safe corridor)"
               : edge.id === "CLT-WYD"

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Driver Terminal - TRK-001</title>
+<!-- Tailwind CSS v3 CDN with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'driver-blue': '#1F5FD6',
+            'alert-red': '#DC2626',
+            'safe-green': '#15803D',
+            'warning-yellow': '#B45309',
+            'ui-black': '#09090B',
+            'card-bg': '#FFFFFF',
+          },
+          fontFamily: {
+            mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="driver-accessibility">
+    /* High contrast daylight legibility and touch target constraints */
+    :root {
+      -webkit-font-smoothing: antialiased;
+      -webkit-tap-highlight-color: transparent;
+    }
+    body {
+      background-color: #F4F4F5;
+      color: #09090B;
+    }
+    .min-touch-56 {
+      min-height: 56px;
+    }
+    .min-touch-44 {
+      min-height: 44px;
+    }
+  </style>
+</head>
+<body class="flex justify-center bg-zinc-200 antialiased font-sans select-none">
+<!-- Mobile Screen Container (390 x 844 iPhone Portrait standard) -->
+<main class="w-full max-w-[390px] min-h-[844px] bg-white flex flex-col justify-between border-x border-zinc-300 shadow-2xl relative overflow-hidden" data-purpose="mobile-screen-container">
+<!-- BEGIN: TopStatusBar & Header -->
+<header class="w-full bg-white border-b-2 border-black pt-3 pb-3 px-4 flex flex-col gap-2.5">
+<!-- Device status line (Time & Network) -->
+<div class="flex justify-between items-center text-xs font-mono font-bold text-zinc-600 tracking-wider">
+<span>14:14</span>
+<span class="inline-flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-emerald-600 inline-block animate-pulse"></span>
+<span>4G CONNECTED</span>
+</span>
+</div>
+<!-- Truck metadata pills -->
+<div class="flex items-center justify-between gap-2" data-purpose="status-badges">
+<div class="flex items-center gap-2">
+<!-- Truck Code -->
+<span aria-label="Truck ID" class="bg-black text-white px-2.5 py-1 text-sm font-mono font-extrabold tracking-wider rounded border border-black">
+            TRK-001
+          </span>
+<!-- Cargo Pill -->
+<span class="bg-red-100 text-red-900 border-2 border-red-700 px-2 py-0.5 text-xs font-bold rounded flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-red-600"></span>
+            Insulin &amp; plasma
+          </span>
+</div>
+<!-- Status Tag -->
+<span class="bg-blue-100 text-blue-900 border-2 border-blue-800 px-2.5 py-0.5 text-xs font-extrabold uppercase tracking-wide rounded">
+          REROUTED
+        </span>
+</div>
+</header>
+<!-- END: TopStatusBar & Header -->
+<!-- BEGIN: PrimaryInstructionSection -->
+<div class="px-4 pt-4 pb-2 flex flex-col gap-1.5 bg-yellow-50/60 border-b-2 border-black" data-purpose="primary-direction">
+<div class="flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-wider text-amber-900">
+<svg class="w-4 h-4 text-amber-700 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24">
+<path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span>Urgent Route Modification</span>
+</div>
+<!-- Main Heavy Command (28-32px bold) -->
+<h1 class="text-[30px] leading-[1.1] font-black tracking-tight text-black">
+        Take the Mysuru route
+      </h1>
+<!-- High contrast plain language explanation -->
+<p class="text-base font-semibold text-zinc-900 leading-snug pt-0.5">
+        NH75 Shiradi Ghat is expected to flood. Rerouted via Madikeri. Adds 65 minutes.
+      </p>
+</div>
+<!-- END: PrimaryInstructionSection -->
+<!-- BEGIN: RouteCard & Metrics -->
+<section class="px-4 py-3 flex-1 flex flex-col gap-3" data-purpose="route-metrics-card">
+<!-- Waypoint & ETA Strip -->
+<div class="bg-zinc-50 border-2 border-black rounded-lg p-3">
+<div class="flex justify-between items-baseline border-b border-zinc-300 pb-2 mb-2">
+<span class="text-xs uppercase font-extrabold tracking-wider text-zinc-600">Next Waypoint</span>
+<span class="text-sm font-black text-black">Ahead 42 km</span>
+</div>
+<div class="text-xl font-black text-black tracking-tight mb-2">
+          Next stop: <span class="text-driver-blue underline decoration-2">Madikeri</span>
+</div>
+<div class="grid grid-cols-2 gap-2 bg-white p-2.5 rounded border border-zinc-300">
+<div>
+<div class="text-[11px] font-bold uppercase text-zinc-500">Remaining Time</div>
+<div class="text-xl font-black font-mono tracking-tight text-zinc-950">2h 10m</div>
+</div>
+<div>
+<div class="text-[11px] font-bold uppercase text-zinc-500">New ETA</div>
+<div class="text-xl font-black font-mono tracking-tight text-zinc-950">19:45</div>
+</div>
+</div>
+</div>
+<!-- Cargo Safety Buffer -->
+<div class="border-2 border-emerald-800 bg-emerald-50 rounded-lg p-2.5 flex items-center justify-between" data-purpose="cargo-safety">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-emerald-700 text-white flex items-center justify-center font-bold text-sm shrink-0">
+            ❄️
+          </div>
+<div>
+<div class="text-xs font-bold text-emerald-950 leading-tight">Refrigeration Battery</div>
+<div class="text-sm font-extrabold text-emerald-900">14h reserve <span class="bg-emerald-200 text-emerald-950 px-1 rounded text-xs ml-1 font-black">SAFE</span></div>
+</div>
+</div>
+</div>
+<!-- Simplified High-Contrast SVG Schematic / Mini-Map -->
+<div class="border-2 border-black bg-zinc-100 rounded-lg p-2 flex flex-col gap-1.5" data-purpose="schematic-map">
+<div class="flex justify-between text-[11px] font-extrabold uppercase tracking-wider text-zinc-600 px-1">
+<span>Corridor Schematic</span>
+<span class="text-emerald-800 font-bold">Via Madikeri (Safe)</span>
+</div>
+<div class="w-full h-24 bg-white border border-zinc-300 rounded relative overflow-hidden flex items-center justify-center">
+<svg class="w-full h-full" preserveaspectratio="xMidYMid meet" viewbox="0 0 350 90">
+<!-- Grid Lines for map context -->
+<line stroke="#E4E4E7" stroke-dasharray="4" stroke-width="1" x1="0" x2="350" y1="45" y2="45"></line>
+<!-- Original Blocked Path (Shiradi Ghat NH75) -->
+<path d="M 40 45 L 180 18" fill="none" stroke="#DC2626" stroke-dasharray="6,4" stroke-width="4"></path>
+<path d="M 180 18 L 310 45" fill="none" stroke="#DC2626" stroke-dasharray="4,4" stroke-width="3"></path>
+<!-- Flood Warning Marker on NH75 -->
+<circle cx="180" cy="18" fill="#DC2626" r="10" stroke="#FFFFFF" stroke-width="2"></circle>
+<text fill="#FFFFFF" font-size="12" font-weight="900" text-anchor="middle" x="180" y="22">✕</text>
+<text fill="#B91C1C" font-size="10" font-weight="800" text-anchor="middle" x="180" y="38">NH75 FLOOD</text>
+<!-- Active Detour Green Route (Via Mysuru/Madikeri) -->
+<path d="M 40 45 L 180 72 L 310 45" fill="none" stroke="#15803D" stroke-linecap="round" stroke-linejoin="round" stroke-width="6"></path>
+<!-- Driver Current Location Pulsing Pin -->
+<circle cx="95" cy="56" fill="#1F5FD6" r="6" stroke="#FFFFFF" stroke-width="2"></circle>
+<!-- Waypoint Nodes -->
+<!-- Bengaluru/Origin -->
+<circle cx="40" cy="45" fill="#09090B" r="4"></circle>
+<text fill="#27272A" font-size="9" font-weight="800" text-anchor="middle" x="40" y="35">Start</text>
+<!-- Madikeri Waypoint -->
+<circle cx="180" cy="72" fill="#15803D" r="5" stroke="#FFFFFF" stroke-width="1.5"></circle>
+<text fill="#15803D" font-size="10" font-weight="900" text-anchor="middle" x="180" y="86">Madikeri</text>
+<!-- Mangaluru Destination -->
+<circle cx="310" cy="45" fill="#09090B" r="4"></circle>
+<text fill="#27272A" font-size="9" font-weight="800" text-anchor="middle" x="310" y="35">Dest.</text>
+</svg>
+</div>
+</div>
+</section>
+<!-- END: RouteCard & Metrics -->
+<!-- BEGIN: ActionArea -->
+<footer class="p-4 bg-white border-t-2 border-black flex flex-col gap-2.5 pb-6" data-purpose="driver-actions">
+<!-- Huge Primary Confirmation Button (Min 56px touch target) -->
+<button aria-label="Confirm understanding of new route" class="w-full min-touch-56 bg-driver-blue hover:bg-blue-700 active:scale-[0.98] transition-transform text-white text-[19px] font-black rounded-lg shadow-md border-2 border-blue-900 flex items-center justify-center tracking-wide focus:outline-none focus:ring-4 focus:ring-blue-300" id="ack-button" type="button">
+        I understand
+      </button>
+<!-- Acknowledged Confirmation Banner -->
+<div class="w-full py-1.5 px-3 bg-emerald-50 border border-emerald-600 rounded flex items-center justify-center gap-1.5 text-emerald-900 text-xs font-bold tracking-tight" id="ack-status">
+<svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" stroke-width="3" viewbox="0 0 24 24">
+<path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span>Acknowledged at 14:12</span>
+</div>
+<!-- Secondary Utility Actions (large glove-friendly touch targets) -->
+<div class="grid grid-cols-2 gap-2 mt-0.5">
+<!-- Report Road Problem (44px target) -->
+<a class="min-touch-44 bg-zinc-100 active:bg-zinc-200 border-2 border-black rounded text-zinc-900 font-extrabold text-xs flex items-center justify-center gap-1 text-center px-2" href="#report-problem" role="button">
+<span class="text-sm">⚠️</span>
+<span>Report Road Issue</span>
+</a>
+<!-- Emergency Dispatch Call Button (44px target) -->
+<a class="min-touch-44 bg-red-600 active:bg-red-700 border-2 border-red-950 text-white font-extrabold text-xs flex items-center justify-center gap-1.5 text-center px-2 rounded shadow-sm" href="tel:18005550199" role="button">
+<span class="text-sm">📞</span>
+<span>Call Dispatch</span>
+</a>
+</div>
+</footer>
+<!-- END: ActionArea -->
+</main>
+<script data-purpose="driver-tap-interaction">
+    // Visual feedback for driver acknowledging routing instruction with work gloves
+    const ackButton = document.getElementById('ack-button');
+    const ackStatus = document.getElementById('ack-status');
+
+    ackButton.addEventListener('click', () => {
+      const now = new Date();
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      
+      ackStatus.innerHTML = `
+        <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+        </svg>
+        <span>Acknowledged at ${hours}:${minutes}</span>
+      `;
+      ackButton.classList.replace('bg-driver-blue', 'bg-zinc-800');
+      ackButton.classList.replace('border-blue-900', 'border-black');
+      ackButton.innerText = 'Route Confirmed ✓';
+    });
+  </script>
+</body></html>

@@ -1,0 +1,28 @@
+[
+  {
+    "id": "ALERT-NDMA-2026-081",
+    "agency": "National Disaster Management Authority (NDMA)",
+    "issuedAt": "2026-11-20T14:30:00Z",
+    "severity": "Extreme",
+    "event": "Flash Flood & Mudslide",
+    "corridorId": "HAS-MNG",
+    "corridorName": "NH-75 Shiradi Ghat",
+    "headline": "Red Alert: Shiradi Ghat corridor closed due to major road collapse",
+    "instructions": "All heavy commercial freight traffic held at Sakleshpur interchange. Avoid NH-75.",
+    "status": "blocked",
+    "confidence": 0.98
+  },
+  {
+    "id": "ALERT-KSDMA-2026-104",
+    "agency": "Kerala State Disaster Management Authority",
+    "issuedAt": "2026-11-20T15:00:00Z",
+    "severity": "Severe",
+    "event": "River Spate & Waterlogging",
+    "corridorId": "TSR-KCH",
+    "corridorName": "NH-544 Periyar Lowland",
+    "headline": "Orange Alert: Periyar river rising above warning levels near Aluva",
+    "instructions": "Commercial vehicles advised caution; slow movement reported.",
+    "status": "degraded",
+    "confidence": 0.82
+  }
+]

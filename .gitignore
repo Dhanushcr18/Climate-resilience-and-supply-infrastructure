@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+/.pnp
+.pnp.js
+
+# Testing
+coverage/
+
+# Next.js
+.next/
+out/
+
+# Production
+build/
+dist/
+
+# Misc
+.DS_Store
+*.pem
+*.log
+
+# Local environment files (protect API keys)
+.env
+.env*.local
+
+# TypeScript
+*.tsbuildinfo
+
+# Scratch & temporary files
+scratch/

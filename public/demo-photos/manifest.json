@@ -1,0 +1,38 @@
+[
+  {
+    "id": "flood-deep",
+    "filename": "flood-deep.jpg",
+    "title": "Severe Flood - 55cm Inundation",
+    "suggestedEdgeId": "HAS-MNG",
+    "edgeName": "NH-75 Shiradi Ghat",
+    "expectedLabel": "blocked",
+    "confidence": 0.94,
+    "waterDepthCm": 55,
+    "passable": false,
+    "description": "Submerged dual carriageway with fast-moving turbulent brown water covering lane markers."
+  },
+  {
+    "id": "landslide-blocked",
+    "filename": "landslide-blocked.jpg",
+    "title": "Mountain Slope Debris & Mudslide",
+    "suggestedEdgeId": "WYN-KZD",
+    "edgeName": "NH-766 Thamarassery Ghat",
+    "expectedLabel": "blocked",
+    "confidence": 0.92,
+    "waterDepthCm": 15,
+    "passable": false,
+    "description": "Boulders and mud washed across hairpin bend, blocking both lanes completely."
+  },
+  {
+    "id": "puddle-passable",
+    "filename": "puddle-passable.jpg",
+    "title": "Shallow Surface Puddling",
+    "suggestedEdgeId": "BLR-MYS",
+    "edgeName": "NH-275 Mysore Expressway",
+    "expectedLabel": "clear",
+    "confidence": 0.88,
+    "waterDepthCm": 8,
+    "passable": true,
+    "description": "Rain runoff with minor puddling along curb; center lane asphalt fully passable."
+  }
+]

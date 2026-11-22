@@ -1,0 +1,528 @@
+<!DOCTYPE html><html class="dark" lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-error-container":"#ffdad6","tertiary-fixed-dim":"#36d8fb","on-tertiary-container":"#00677a","background":"#11131a","surface-variant":"#32353c","on-secondary-container":"#b9aaff","surface-bright":"#373941","surface-container-lowest":"#0b0e15","error":"#ffb4ab","primary-container":"#14f1d9","surface-container-highest":"#32353c","error-container":"#93000a","outline":"#849490","on-secondary-fixed-variant":"#4816cb","secondary":"#cabeff","surface-tint":"#00dec8","inverse-primary":"#006b5f","tertiary":"#e2f8ff","outline-variant":"#3a4a47","primary-fixed-dim":"#00dec8","tertiary-fixed":"#aeecff","on-tertiary-fixed":"#001f26","inverse-on-surface":"#2e3038","surface-container-high":"#272a31","on-error":"#690005","primary-fixed":"#34fde4","surface-container":"#1d1f26","surface":"#11131a","on-tertiary":"#003641","on-secondary":"#31009a","on-tertiary-fixed-variant":"#004e5d","surface-container-low":"#191b22","on-secondary-fixed":"#1c0062","primary":"#c7fff3","on-surface-variant":"#b9cac6","on-primary":"#003731","inverse-surface":"#e1e2ec","secondary-fixed":"#e6deff","surface-dim":"#11131a","on-primary-fixed-variant":"#005047","tertiary-container":"#86e5ff","on-surface":"#e1e2ec","on-background":"#e1e2ec","secondary-fixed-dim":"#cabeff","on-primary-fixed":"#00201c","on-primary-container":"#00695e","secondary-container":"#4816cb"},borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},spacing:{"margin-md":"1.5rem","space-xs":"0.25rem",gutter:"1rem","space-lg":"1.5rem","space-sm":"0.5rem","space-xl":"2.5rem",margin:"1rem","margin-lg":"2rem","gutter-lg":"1.5rem","space-md":"1rem"},fontFamily:{"headline-lg":["Space Grotesk"],"headline-md":["Space Grotesk"],"display-hero-mobile":["Space Grotesk"],"body-md":["Inter"],"headline-sm":["Space Grotesk"],"headline-lg-mobile":["Space Grotesk"],"display-hero":["Space Grotesk"],"telemetry-metric":["JetBrains Mono"],"label-caps":["JetBrains Mono"],"body-sm":["Inter"],"telemetry-value":["JetBrains Mono"],"body-lg":["Inter"],"telemetry-timestamp":["JetBrains Mono"]},fontSize:{"headline-lg":["32px",{lineHeight:"40px",letterSpacing:"-0.01em",fontWeight:"600"}],"headline-md":["22px",{lineHeight:"30px",letterSpacing:"-0.005em",fontWeight:"600"}],"display-hero-mobile":["32px",{lineHeight:"40px",letterSpacing:"-0.01em",fontWeight:"700"}],"body-md":["14px",{lineHeight:"20px",letterSpacing:"-0.005em",fontWeight:"400"}],"headline-sm":["18px",{lineHeight:"26px",letterSpacing:"0em",fontWeight:"500"}],"headline-lg-mobile":["24px",{lineHeight:"32px",letterSpacing:"0em",fontWeight:"600"}],"display-hero":["48px",{lineHeight:"56px",letterSpacing:"-0.02em",fontWeight:"700"}],"telemetry-metric":["28px",{lineHeight:"32px",letterSpacing:"-0.03em",fontWeight:"600"}],"label-caps":["10px",{lineHeight:"12px",letterSpacing:"0.12em",fontWeight:"600"}],"body-sm":["12px",{lineHeight:"18px",letterSpacing:"0em",fontWeight:"400"}],"telemetry-value":["14px",{lineHeight:"18px",letterSpacing:"0em",fontWeight:"500"}],"body-lg":["16px",{lineHeight:"24px",letterSpacing:"-0.01em",fontWeight:"400"}],"telemetry-timestamp":["11px",{lineHeight:"14px",letterSpacing:"0.06em",fontWeight:"400"}]}}}};</script></head><body class="bg-background font-body-md text-body-md text-on-surface selection:bg-primary-container selection:text-on-primary-container min-h-screen bg-[radial-gradient(circle_at_15%_20%,rgba(20,241,217,0.05),transparent_40%),radial-gradient(circle_at_85%_10%,rgba(124,92,255,0.06),transparent_45%)]"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/80 backdrop-blur-2xl shadow-[0_1px_12px_rgba(0,0,0,0.5)]"><div class="h-16 w-full px-gutter flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-md"><img alt="ResilienceOps Aurora Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrBIBCoRenOzPasJW8mAVtXbbapZphAO2pwp1tVj6LIiSV4IKYlCW-qvkq8mEAiW8TVS2Fe_Jot16w3peYA9THSSLq4We7BIibIN34vJOJxU3zsNZb0NXc_kD27iTToK4TCm6jImTl_o-tHIetsvTUEABN_9LveE8lmcnHaY2xaJbnLGRg5SynL-2ZSLfXk3zCZFQi3CS_KDamvTK_EULFZ8BKjexL3dCeECFyJ_DePpCg"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-primary tracking-tight font-semibold">ResilienceOps</span><span class="px-space-xs py-0.5 rounded-full bg-secondary-container/40 text-on-secondary-container font-label-caps text-label-caps border border-secondary/30">v2.4 AUTONOMOUS CORE</span></div><div class="h-5 w-[1px] bg-outline-variant/40 hidden xl:block"></div><div class="relative hidden xl:block"><button class="flex items-center gap-space-xs px-space-sm py-1.5 rounded-lg bg-surface-container/60 hover:bg-surface-container-high text-on-surface hover:text-on-surface font-body-sm text-body-sm transition-all shadow-[0_0_12px_rgba(20,241,217,0.08)]"><span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span><span class="font-telemetry-value text-telemetry-value text-on-surface">Monsoon Surge - Western Ghats (Active)</span><span class="material-symbols-outlined text-[16px] text-on-surface-variant">expand_more</span></button></div></div><nav class="hidden lg:flex items-center gap-1 p-1 bg-surface-container-low/60 rounded-xl" data-active-classes="bg-surface-container-high text-primary-fixed shadow-[inset_0_1px_0_0_rgba(20,241,217,0.3)]"><a aria-current="page" class="px-3 py-1.5 rounded-md font-medium text-[#14f1d9] bg-[#14f1d9]/10 border-b-2 border-[#14f1d9] font-body-sm transition-all" data-path="mission-control" href="#">Mission Control</a><a class="px-3 py-1.5 rounded-lg font-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="cinematic-landing" href="#">Cinematic Landing</a><a class="px-3 py-1.5 rounded-lg font-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="shipment-telemetry" href="#">Shipment Telemetry</a><a class="px-3 py-1.5 rounded-lg font-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="driver-view" href="#">Driver View</a><a class="px-3 py-1.5 rounded-lg font-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="about-model-transparency" href="#">Model Transparency</a></nav><div class="flex items-center gap-space-sm"><div class="hidden 2xl:flex items-center gap-space-xs px-space-sm py-1 rounded bg-surface-container/70 font-telemetry-timestamp text-telemetry-timestamp text-on-surface-variant"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-fixed opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-primary-container"></span></span><span>UTC +05:30</span><span class="text-primary font-semibold">LIVE SIM TICK 04:42:19Z</span></div><div class="hidden md:flex items-center bg-surface-container-low/80 p-0.5 rounded-lg gap-0.5"><button class="p-1.5 rounded hover:bg-surface-container-high hover:text-on-surface text-on-surface-variant flex items-center justify-center" title="Pause Simulation"><span class="material-symbols-outlined text-[16px]">pause</span></button><button class="px-2 py-1 rounded hover:bg-surface-container-high hover:text-on-surface text-on-surface-variant font-telemetry-value text-telemetry-value" title="Step +15 Minutes">+15m</button><div class="flex items-center bg-surface-container-lowest/70 rounded p-0.5"><button class="px-1.5 py-0.5 text-on-primary bg-primary rounded font-label-caps text-label-caps font-bold">1x</button><button class="px-1.5 py-0.5 text-on-surface-variant hover:text-on-surface font-label-caps text-label-caps">2x</button><button class="px-1.5 py-0.5 text-on-surface-variant hover:text-on-surface font-label-caps text-label-caps">5x</button><button class="px-1.5 py-0.5 text-on-surface-variant hover:text-on-surface font-label-caps text-label-caps">10x</button></div></div><div class="flex items-center gap-space-xs px-2.5 py-1 rounded-full bg-secondary-container/30 shadow-[0_0_14px_rgba(124,92,255,0.35)] cursor-pointer"><span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span><span class="font-label-caps text-label-caps text-secondary font-bold tracking-wider">AGENT ACTIVE</span></div><button class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary-container text-on-primary font-headline-sm text-[13px] font-semibold tracking-wide shadow-[0_0_16px_rgba(20,241,217,0.35)] hover:shadow-[0_0_24px_rgba(20,241,217,0.5)] transition-all"><span class="material-symbols-outlined text-[16px]">play_circle</span>Show Me</button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div><div class="h-7 w-full bg-surface-container-lowest/90 px-gutter hidden sm:flex items-center justify-between font-label-caps text-label-caps text-on-surface-variant border-t border-surface-variant/40"><div class="flex items-center gap-space-md"><span class="flex items-center gap-1 text-primary-fixed-dim"><span class="material-symbols-outlined text-[13px]">check_circle</span>24/24 Tests Passing</span><span class="flex items-center gap-1"><span class="material-symbols-outlined text-[13px] text-tertiary-fixed-dim">view_in_ar</span>Deck.GL 3D Engine</span><span class="flex items-center gap-1 text-on-surface"><span class="material-symbols-outlined text-[13px] text-primary">cloud_off</span>Zero API Key Offline Ready</span></div><div class="flex items-center gap-space-sm font-telemetry-timestamp text-telemetry-timestamp text-on-surface-variant"><span>AURORA TELEMETRY BRIDGE v2.4</span><span class="text-primary">LATENCY: 12ms</span></div></div></header><aside class="fixed left-0 top-24 bottom-0 w-64 bg-surface-container-lowest/80 backdrop-blur-xl z-40 hidden md:flex flex-col justify-between py-space-md shadow-[1px_0_12px_rgba(0,0,0,0.4)]"><div class="flex flex-col gap-space-md px-3"><div class="px-3 font-label-caps text-label-caps text-on-surface-variant tracking-widest uppercase">Telemetry Streams</div><nav class="flex flex-col gap-1" data-active-classes="bg-surface-container-high text-primary font-semibold shadow-[0_0_12px_rgba(20,241,217,0.15)]"><a aria-current="page" class="flex items-center gap-space-sm px-3 py-2 rounded-lg transition-all bg-surface-container-high text-primary font-semibold shadow-[0_0_12px_rgba(20,241,217,0.15)]" data-path="mission-control" href="#"><span class="material-symbols-outlined text-[18px]">grid_view</span>Mission Control</a><a class="flex items-center gap-space-sm px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-sm text-body-sm" data-path="shipment-telemetry" href="#"><span class="material-symbols-outlined text-[18px]">route</span>Shipment Telemetry</a><a class="flex items-center gap-space-sm px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-sm text-body-sm" data-path="driver-view" href="#"><span class="material-symbols-outlined text-[18px]">navigation</span>Driver View</a><a class="flex items-center gap-space-sm px-3 py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-sm text-body-sm" data-path="about-model-transparency" href="#"><span class="material-symbols-outlined text-[18px]">psychology</span>Model Transparency</a></nav><div class="px-3 pt-2 font-label-caps text-label-caps text-on-surface-variant tracking-widest uppercase">Active Scenarios</div><div class="flex flex-col gap-1.5 px-1"><div class="p-2 rounded bg-surface-container/60 hover:bg-surface-container-high transition-colors cursor-pointer"><div class="flex items-center justify-between"><span class="font-label-caps text-label-caps text-primary">WESTERN GHATS</span><span class="text-[10px] text-error font-telemetry-timestamp">CRITICAL</span></div><p class="font-body-sm text-[11px] text-on-surface-variant truncate mt-0.5">Monsoon Flash Inundation</p></div><div class="p-2 rounded bg-surface-container/30 hover:bg-surface-container-high transition-colors cursor-pointer"><div class="flex items-center justify-between"><span class="font-label-caps text-label-caps text-on-surface-variant">BAY OF BENGAL</span><span class="text-[10px] text-secondary font-telemetry-timestamp">STANDBY</span></div><p class="font-body-sm text-[11px] text-on-surface-variant truncate mt-0.5">Cyclone Nilam Track</p></div><div class="p-2 rounded bg-surface-container/30 hover:bg-surface-container-high transition-colors cursor-pointer"><div class="flex items-center justify-between"><span class="font-label-caps text-label-caps text-on-surface-variant">CENTRAL CORRIDOR</span><span class="text-[10px] text-on-surface-variant font-telemetry-timestamp">NORMAL</span></div><p class="font-body-sm text-[11px] text-on-surface-variant truncate mt-0.5">Heatwave Thermal Load</p></div></div></div><div class="px-3"><div class="p-3 rounded-xl bg-surface-container/50 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]"><div class="flex items-center justify-between mb-1"><span class="font-label-caps text-label-caps text-secondary">AUTOPILOT.04</span><span class="w-1.5 h-1.5 rounded-full bg-secondary animate-ping"></span></div><p class="font-telemetry-timestamp text-telemetry-timestamp text-on-surface-variant">Dynamic corridor rebalancing running continuously.</p></div></div></aside><div class="md:pl-64"><main class="relative pt-24 min-h-screen bg-transparent w-full px-gutter"><div class="flex flex-col w-full pb-8 space-y-4">
+<!-- TOP TELEMETRY STRIP (5 Frosted Glass KPI Cards) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+<!-- KPI 1: Delay Hours Saved -->
+<div class="relative bg-surface-container-low/70 backdrop-blur-xl p-3.5 rounded-xl shadow-lg flex flex-col justify-between overflow-hidden group">
+<div class="absolute -right-6 -top-6 w-24 h-24 bg-secondary/10 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Delay Hours Saved</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container/40 text-secondary font-label-caps text-[9px] tracking-tight">Modelled estimate</span>
+</div>
+<div class="flex items-baseline gap-2 my-1">
+<span class="font-telemetry-metric text-telemetry-metric text-secondary font-bold tracking-tight drop-shadow-[0_0_12px_rgba(202,190,255,0.4)]">142.8<span class="text-xs font-normal text-on-surface-variant ml-0.5">hrs</span></span>
+<span class="font-telemetry-timestamp text-telemetry-timestamp text-primary font-semibold flex items-center">
+<span class="material-symbols-outlined text-[12px] mr-0.5">trending_up</span>+38.4%
+        </span>
+</div>
+<div class="flex items-center justify-between pt-1">
+<span class="font-body-sm text-[11px] text-on-surface-variant truncate">vs Baseline Static Pathing</span>
+<div class="w-16 h-4">
+<svg class="w-full h-full text-secondary" fill="none" viewBox="0 0 64 16">
+<path d="M0 13L12 11L24 14L36 7L48 5L64 1" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"></path>
+<path d="M0 13L12 11L24 14L36 7L48 5L64 1V16H0Z" fill="currentColor" fill-opacity="0.12"></path>
+</svg>
+</div>
+</div>
+</div>
+<!-- KPI 2: At-Risk Shipments -->
+<div class="bg-surface-container-low/70 backdrop-blur-xl p-3.5 rounded-xl shadow-lg flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">At-Risk Shipments</span>
+<span class="px-1.5 py-0.5 rounded bg-error-container/30 text-error font-label-caps text-[10px] animate-pulse font-semibold">2 CRITICAL</span>
+</div>
+<div class="flex items-baseline gap-1.5 my-1">
+<span class="font-telemetry-metric text-telemetry-metric text-on-surface font-bold">03<span class="text-sm font-normal text-on-surface-variant"> / 14</span></span>
+<span class="font-label-caps text-label-caps text-error bg-error/10 px-1.5 py-0.5 rounded">High Hazard</span>
+</div>
+<div class="flex flex-wrap gap-1.5 pt-0.5">
+<span class="inline-flex items-center gap-1 font-telemetry-timestamp text-[10px] bg-surface-container-high px-2 py-0.5 rounded text-error">
+<span class="w-1.5 h-1.5 rounded-full bg-error animate-ping"></span>TK-902 (Insulin)
+        </span>
+<span class="inline-flex items-center gap-1 font-telemetry-timestamp text-[10px] bg-surface-container-high px-2 py-0.5 rounded text-secondary">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>TK-410 (Plasma)
+        </span>
+</div>
+</div>
+<!-- KPI 3: Autonomous Interventions -->
+<div class="bg-surface-container-low/70 backdrop-blur-xl p-3.5 rounded-xl shadow-lg flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Autonomous Decisions</span>
+<span class="material-symbols-outlined text-secondary text-[16px]">smart_toy</span>
+</div>
+<div class="flex items-baseline gap-2 my-1">
+<span class="font-telemetry-metric text-telemetry-metric text-primary font-bold">10</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Last 4 hrs</span>
+</div>
+<div class="grid grid-cols-3 gap-1 pt-1 text-center font-telemetry-timestamp text-[10px]">
+<div class="bg-surface-container-high/60 rounded py-0.5 text-primary">7 Rerouted</div>
+<div class="bg-surface-container-high/60 rounded py-0.5 text-secondary">2 Held</div>
+<div class="bg-surface-container-high/60 rounded py-0.5 text-error">1 Escalate</div>
+</div>
+</div>
+<!-- KPI 4: Critical Corridor Risk -->
+<div class="bg-surface-container-low/70 backdrop-blur-xl p-3.5 rounded-xl shadow-lg flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Corridor Vulnerability</span>
+<span class="material-symbols-outlined text-error text-[16px]">landslide</span>
+</div>
+<div class="space-y-1.5 my-1">
+<div class="flex items-center justify-between font-telemetry-timestamp text-telemetry-timestamp">
+<span class="text-error font-medium truncate">Shiradi Ghat</span>
+<span class="text-error font-bold">91% • CLOSED</span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-1 overflow-hidden">
+<div class="bg-error h-full rounded-full" style="width: 91%"></div>
+</div>
+<div class="flex items-center justify-between font-telemetry-timestamp text-telemetry-timestamp">
+<span class="text-on-surface-variant truncate">Charmadi Bypass</span>
+<span class="text-secondary font-medium">64% ALERT</span>
+</div>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-1 overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 64%"></div>
+</div>
+</div>
+<!-- KPI 5: Network Integrity -->
+<div class="bg-surface-container-low/70 backdrop-blur-xl p-3.5 rounded-xl shadow-lg flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Network Integrity</span>
+<span class="flex items-center gap-1 font-label-caps text-[9px] text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>LOCKED
+        </span>
+</div>
+<div class="flex items-baseline gap-2 my-1">
+<span class="font-telemetry-metric text-telemetry-metric text-on-surface font-bold">98.4<span class="text-sm font-normal text-on-surface-variant">%</span></span>
+<span class="font-body-sm text-[11px] text-primary-fixed-dim">Nodes Synchronized</span>
+</div>
+<div class="flex items-center justify-between font-telemetry-timestamp text-[10px] text-on-surface-variant pt-1">
+<span>Clock Jitter: 0.04ms</span>
+<span class="text-primary font-mono">STABLE</span>
+</div>
+</div>
+</div>
+<!-- CENTER + RIGHT MAIN SPLIT CONSOLE -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-4">
+<!-- MAIN GEOSPATIAL 3D TACTICAL CANVAS (8 COLS) -->
+<div class="xl:col-span-8 relative rounded-2xl overflow-hidden bg-surface-container-lowest shadow-2xl flex flex-col min-h-[580px] lg:min-h-[660px]">
+<!-- Interactive Tactical Map Canvas Area -->
+<div class="relative flex-1 w-full h-full bg-gradient-to-br from-surface-container-lowest via-surface-container-low to-background overflow-hidden select-none">
+<!-- Synthetic Geospatial Mesh Background -->
+<svg class="absolute inset-0 w-full h-full opacity-35" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<pattern height="40" id="grid-pattern" patternUnits="userSpaceOnUse" width="40">
+<path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(58,74,71,0.3)" stroke-width="0.75"></path>
+</pattern>
+<radialGradient cx="35%" cy="45%" id="monsoon-glow" r="45%">
+<stop offset="0%" stop-color="#93000a" stop-opacity="0.32"></stop>
+<stop offset="40%" stop-color="#36d8fb" stop-opacity="0.12"></stop>
+<stop offset="100%" stop-color="transparent" stop-opacity="0"></stop>
+</radialGradient>
+<linearGradient id="corridor-safe" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#14f1d9"></stop>
+<stop offset="100%" stop-color="#22e3a0"></stop>
+</linearGradient>
+<linearGradient id="reroute-neon" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" stop-color="#cabeff"></stop>
+<stop offset="50%" stop-color="#14f1d9"></stop>
+<stop offset="100%" stop-color="#36d8fb"></stop>
+</linearGradient>
+<filter height="140%" id="neon-glow" width="140%" x="-20%" y="-20%">
+<feGaussianBlur result="blur" stdDeviation="3.5"></feGaussianBlur>
+<feMerge>
+<feMergeNode in="blur"></feMergeNode>
+<feMergeNode in="SourceGraphic"></feMergeNode>
+</feMerge>
+</filter>
+</defs>
+<!-- Perspective Grid Surface -->
+<rect fill="url(#grid-pattern)" height="100%" width="100%"></rect>
+<!-- Weather Atmospheric Bloom (Monsoon Cell) -->
+<circle cx="380" cy="290" fill="url(#monsoon-glow)" r="190"></circle>
+<!-- High Elevation Western Ghats Topo Contour Indications -->
+<path d="M 290 120 Q 320 220 340 310 T 360 480" fill="none" stroke="rgba(255,255,255,0.06)" stroke-linecap="round" stroke-width="48"></path>
+<path d="M 300 130 Q 330 230 350 320 T 370 470" fill="none" stroke="rgba(255,255,255,0.08)" stroke-linecap="round" stroke-width="20"></path>
+<!-- REGIONAL CORRIDOR ARCS & HIGHWAYS -->
+<!-- NH-48 Bengaluru to Chennai (Safe Corridor) -->
+<path d="M 470 310 Q 560 300 680 340" fill="none" opacity="0.8" stroke="#22e3a0" stroke-width="2.5"></path>
+<path d="M 470 310 Q 560 300 680 340" fill="none" opacity="0.15" stroke="#22e3a0" stroke-width="7"></path>
+<!-- Bengaluru to Coimbatore to Kochi (Operational) -->
+<path d="M 470 310 L 460 430 L 410 510" fill="none" opacity="0.75" stroke="#22e3a0" stroke-width="2"></path>
+<!-- Kozhikode Coastal Connector -->
+<path d="M 320 420 L 410 510" fill="none" opacity="0.6" stroke="#22e3a0" stroke-width="1.8"></path>
+<!-- ORIGINAL HAZARD ROUTE: NH-75 Shiradi Ghat (Bengaluru -> Hassan -> Sakleshpur -> Shiradi -> Mangaluru) -->
+<!-- Safe segment to Hassan -->
+<path d="M 470 310 L 385 270" fill="none" opacity="0.9" stroke="#22e3a0" stroke-width="2.5"></path>
+<!-- BLOCKED SECTION: Shiradi Ghat Landslide Zone (Pulsing Red) -->
+<path d="M 385 270 L 320 280" fill="none" filter="url(#neon-glow)" stroke="#ff3b5c" stroke-dasharray="6,4" stroke-width="4.5"></path>
+<path d="M 385 270 L 320 280" fill="none" opacity="0.3" stroke="#ff3b5c" stroke-width="12"></path>
+<!-- DYNAMIC RE-ROUTE ARC (Neon Cyan / Violet) -->
+<!-- Diverting from Sakleshpur north-west via Charmadi bypass to Mangaluru -->
+<path d="M 405 280 C 390 230, 310 240, 240 285" fill="none" filter="url(#neon-glow)" id="dynamic-reroute" stroke="url(#reroute-neon)" stroke-linecap="round" stroke-width="3.5" style="stroke-dashoffset: -23;"></path>
+<path d="M 405 280 C 390 230, 310 240, 240 285" fill="none" opacity="0.18" stroke="#14f1d9" stroke-width="8"></path>
+<!-- Flowing Particle / Dynamic Trajectory Dots -->
+<circle cx="340" cy="245" fill="#14f1d9" r="3.5">
+<animate attributeName="opacity" dur="2s" repeatCount="indefinite" values="0.3;1;0.3"></animate>
+</circle>
+<circle cx="300" cy="254" fill="#14f1d9" r="3.5">
+<animate attributeName="opacity" dur="2s" repeatCount="indefinite" values="0.8;0.2;0.8"></animate>
+</circle>
+<!-- BLOCKED CORRIDOR SHOCKWAVE PULSE -->
+<circle cx="352" cy="275" fill="none" opacity="0.8" r="14" stroke="#ff3b5c" stroke-width="2">
+<animate attributeName="r" dur="2.4s" repeatCount="indefinite" values="8;32"></animate>
+<animate attributeName="opacity" dur="2.4s" repeatCount="indefinite" values="0.9;0"></animate>
+</circle>
+<circle cx="352" cy="275" fill="#ff3b5c" r="4"></circle>
+</svg>
+<!-- 3D PITCH TACTICAL TERRAIN OVERLAY LAYER (Simulated Deck.GL 55-degree projection) -->
+<div class="absolute inset-0 pointer-events-none flex flex-col justify-between p-6">
+<!-- Top Row Tactical Bar -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2 bg-surface-container-lowest/80 backdrop-blur-md px-3 py-1.5 rounded-lg border-0 shadow-lg">
+<span class="w-2.5 h-2.5 rounded-full bg-error animate-ping"></span>
+<span class="font-label-caps text-label-caps text-on-surface tracking-wider font-semibold">LANDSLIDE BREACH: SHIRADI KM 84</span>
+<span class="font-telemetry-timestamp text-telemetry-timestamp text-error ml-2">EST. CLEARANCE: 14h 40m</span>
+</div>
+<!-- Monsoon Intensity Pill -->
+<div class="flex items-center gap-2 bg-surface-container-lowest/85 backdrop-blur-md px-3 py-1.5 rounded-lg shadow-lg">
+<span class="material-symbols-outlined text-tertiary-fixed-dim text-[16px]">rainy</span>
+<span class="font-telemetry-timestamp text-telemetry-timestamp text-on-surface">Western Ghats Precip:</span>
+<span class="font-telemetry-value text-telemetry-value text-tertiary-fixed font-bold">84 mm/h</span>
+<span class="px-1 py-0.2 rounded bg-error-container/40 text-on-error-container font-label-caps text-[9px]">TORRENTIAL</span>
+</div>
+</div>
+<!-- CITY NODES & TRUCK TELEMETRY PINS (Positioned over coordinates) -->
+<!-- Bengaluru Node -->
+<div class="absolute" style="left: 470px; top: 300px;">
+<div class="relative -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+<div class="w-3.5 h-3.5 rounded-full bg-primary-container shadow-[0_0_12px_#14f1d9] flex items-center justify-center">
+<div class="w-1.5 h-1.5 rounded-full bg-background"></div>
+</div>
+<span class="font-label-caps text-[11px] text-on-surface font-semibold tracking-wider mt-1 drop-shadow-md">BENGALURU [BLR]</span>
+<span class="font-telemetry-timestamp text-[9px] text-on-surface-variant">HUB 01 • ACTIVE</span>
+</div>
+</div>
+<!-- Mangaluru Node -->
+<div class="absolute" style="left: 235px; top: 280px;">
+<div class="relative -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+<div class="w-3 h-3 rounded-full bg-primary shadow-[0_0_10px_#14f1d9]"></div>
+<span class="font-label-caps text-[11px] text-on-surface font-semibold tracking-wider mt-1 drop-shadow-md">MANGALURU [IXE]</span>
+<span class="font-telemetry-timestamp text-[9px] text-primary">DESTINATION</span>
+</div>
+</div>
+<!-- Hassan Staging Point -->
+<div class="absolute" style="left: 385px; top: 260px;">
+<div class="relative -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+<div class="w-2.5 h-2.5 rounded-full bg-secondary-fixed"></div>
+<span class="font-label-caps text-[10px] text-on-surface-variant tracking-wider mt-0.5">HASSAN GATE</span>
+</div>
+</div>
+<!-- Chennai Node -->
+<div class="absolute" style="left: 675px; top: 335px;">
+<div class="relative -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+<div class="w-2.5 h-2.5 rounded-full bg-primary/70"></div>
+<span class="font-label-caps text-[10px] text-on-surface-variant tracking-wider mt-0.5">CHENNAI [MAA]</span>
+</div>
+</div>
+<!-- Kochi Node -->
+<div class="absolute" style="left: 405px; top: 505px;">
+<div class="relative -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+<div class="w-2.5 h-2.5 rounded-full bg-primary/70"></div>
+<span class="font-label-caps text-[10px] text-on-surface-variant tracking-wider mt-0.5">KOCHI [COK]</span>
+</div>
+</div>
+<!-- Kozhikode Node -->
+<div class="absolute" style="left: 315px; top: 415px;">
+<div class="relative -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+<div class="w-2 h-2 rounded-full bg-primary/60"></div>
+<span class="font-label-caps text-[10px] text-on-surface-variant tracking-wider mt-0.5">KOZHIKODE [CCJ]</span>
+</div>
+</div>
+<!-- LIVE TRUCK TELEMETRY MARKER: #TK-902 (Insulin Refrigerated Van) -->
+<div class="absolute" style="left: 345px; top: 236px;">
+<div class="relative -translate-x-1/2 -translate-y-1/2 pointer-events-auto cursor-pointer group">
+<!-- Animated Beacon Rings -->
+<span class="absolute -inset-2 rounded-full bg-primary-container/30 animate-ping"></span>
+<div class="relative px-2.5 py-1 rounded bg-surface-container-highest/95 backdrop-blur-md shadow-2xl flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[15px]">local_shipping</span>
+<span class="font-telemetry-value text-[11px] text-primary font-bold">#TK-902</span>
+<span class="px-1 rounded bg-secondary-container/80 text-on-secondary-container font-label-caps text-[8px]">RE-ROUTING</span>
+</div>
+<!-- Hover Telemetry Cardlet -->
+<div class="hidden group-hover:flex absolute left-full ml-2 top-0 w-48 p-2 rounded bg-surface-container-lowest/95 backdrop-blur-xl shadow-2xl flex-col gap-1 z-30">
+<div class="flex items-center justify-between font-label-caps text-[9px] text-on-surface-variant">
+<span>COLD CHAIN PAYLOAD</span>
+<span class="text-primary font-bold">4.2°C STABLE</span>
+</div>
+<div class="font-body-sm text-[11px] text-on-surface font-medium">Insulin Glargine 12,000 Units</div>
+<div class="font-telemetry-timestamp text-[10px] text-secondary">Path: Charmadi Bypass (ETA 07:15Z)</div>
+</div>
+</div>
+</div>
+<!-- HELD TRUCK MARKER: #TK-118 at Hassan -->
+<div class="absolute" style="left: 395px; top: 285px;">
+<div class="relative -translate-x-1/2 -translate-y-1/2 pointer-events-auto cursor-pointer">
+<div class="px-1.5 py-0.5 rounded bg-surface-container-high/90 backdrop-blur-sm flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-telemetry-value text-[9px] text-on-surface">TK-118 (HELD)</span>
+</div>
+</div>
+</div>
+<!-- 3D Rainfall Columns Visual Indicator Widget (Western Ghats Section) -->
+<div class="absolute bottom-6 left-6 pointer-events-auto bg-surface-container-low/85 backdrop-blur-xl p-3 rounded-xl shadow-xl max-w-xs">
+<div class="flex items-center justify-between mb-1.5">
+<span class="font-label-caps text-label-caps text-on-surface-variant">3D COLUMN PRECIPITATION</span>
+<span class="font-telemetry-timestamp text-[10px] text-tertiary-fixed">RADAR: DOPPLER-D</span>
+</div>
+<div class="flex items-end gap-1.5 h-12 w-full pt-2">
+<div class="flex-1 bg-surface-variant rounded-t flex flex-col justify-end" style="height: 35%">
+<div class="w-full bg-primary h-2 rounded-t"></div>
+</div>
+<div class="flex-1 bg-surface-variant rounded-t flex flex-col justify-end" style="height: 55%">
+<div class="w-full bg-primary h-4 rounded-t"></div>
+</div>
+<div class="flex-1 bg-surface-variant rounded-t flex flex-col justify-end" style="height: 98%">
+<div class="w-full bg-error h-full rounded-t shadow-[0_0_8px_#ff3b5c]"></div>
+</div>
+<div class="flex-1 bg-surface-variant rounded-t flex flex-col justify-end" style="height: 80%">
+<div class="w-full bg-secondary h-6 rounded-t"></div>
+</div>
+<div class="flex-1 bg-surface-variant rounded-t flex flex-col justify-end" style="height: 42%">
+<div class="w-full bg-primary h-2 rounded-t"></div>
+</div>
+<div class="flex-1 bg-surface-variant rounded-t flex flex-col justify-end" style="height: 25%">
+<div class="w-full bg-primary h-1 rounded-t"></div>
+</div>
+</div>
+<div class="flex justify-between font-telemetry-timestamp text-[8px] text-on-surface-variant mt-1">
+<span>Hassan</span>
+<span class="text-error font-bold">Shiradi Peak (84mm)</span>
+<span>Mangaluru</span>
+</div>
+</div>
+</div>
+<!-- Floating Glass Tactical Map Controls (Top Right) -->
+<div class="absolute top-4 right-4 flex flex-col gap-1.5 bg-surface-container-lowest/80 backdrop-blur-xl p-1.5 rounded-xl shadow-2xl z-20">
+<button class="p-2 rounded-lg bg-surface-container-high text-primary hover:bg-surface-variant transition-colors flex items-center justify-center" title="Deck.GL 3D/2D Pitch (55 deg)">
+<span class="font-label-caps text-[10px] font-bold">3D:55°</span>
+</button>
+<button class="p-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors flex items-center justify-center" title="Monsoon Doppler Radar Layer">
+<span class="material-symbols-outlined text-[18px] text-tertiary-fixed-dim">radar</span>
+</button>
+<button class="p-2 rounded-lg text-primary hover:text-on-surface hover:bg-surface-container-high transition-colors flex items-center justify-center" title="Truck Trajectory Trails">
+<span class="material-symbols-outlined text-[18px]">polyline</span>
+</button>
+<button class="p-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors flex items-center justify-center" title="Satellite Basemap Layer">
+<span class="material-symbols-outlined text-[18px]">layers</span>
+</button>
+<div class="w-full h-px bg-surface-variant/60 my-0.5"></div>
+<button class="p-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors flex items-center justify-center" title="Reset Camera View">
+<span class="material-symbols-outlined text-[18px]">restart_alt</span>
+</button>
+<button class="p-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors flex items-center justify-center" title="Fullscreen Deck View">
+<span class="material-symbols-outlined text-[18px]">fullscreen</span>
+</button>
+</div>
+<!-- Geospatial Legend Bar (Bottom Right) -->
+<div class="absolute bottom-6 right-6 bg-surface-container-lowest/80 backdrop-blur-md px-3 py-1.5 rounded-lg flex items-center gap-3 font-label-caps text-[9px] text-on-surface-variant">
+<span class="flex items-center gap-1.5"><span class="w-2.5 h-1 bg-primary rounded-full"></span>Safe Passage</span>
+<span class="flex items-center gap-1.5"><span class="w-2.5 h-1 bg-secondary rounded-full"></span>High Alert</span>
+<span class="flex items-center gap-1.5"><span class="w-2.5 h-1 bg-error rounded-full animate-pulse"></span>Closed Sector</span>
+<span class="flex items-center gap-1.5"><span class="w-2.5 h-1 bg-primary-fixed-dim rounded-full shadow-[0_0_6px_#14f1d9]"></span>Active Reroute Arc</span>
+</div>
+</div>
+</div>
+<!-- RIGHT-HAND MULTI-TAB INTELLIGENCE DECK (4 COLS) -->
+<div class="xl:col-span-4 bg-surface-container-low/70 backdrop-blur-2xl rounded-2xl shadow-2xl flex flex-col h-[580px] lg:h-[660px] overflow-hidden">
+<!-- Deck Header with Tabs -->
+<div class="p-3 bg-surface-container-lowest/80">
+<div class="flex items-center justify-between mb-2.5">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-headline-sm text-[13px] text-on-surface font-semibold tracking-wide uppercase">AUTONOMOUS ORCHESTRATION</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-secondary-container/40 text-secondary font-label-caps text-[9px] font-mono">CORE v2.4</span>
+</div>
+<!-- Animated Segmented Control Tabs -->
+<div class="grid grid-cols-4 gap-1 p-1 bg-surface-container rounded-lg font-label-caps text-[10px]">
+<button class="py-1.5 text-center font-bold text-on-primary bg-primary rounded transition-all shadow-sm">Agent Feed</button>
+<button class="py-1.5 text-center text-on-surface-variant hover:text-on-surface transition-colors">Active (14)</button>
+<button class="py-1.5 text-center text-on-surface-variant hover:text-on-surface transition-colors">Corridors</button>
+<button class="py-1.5 text-center text-on-surface-variant hover:text-on-surface transition-colors">Impact</button>
+</div>
+</div>
+<!-- Agent Activity Feed Scrollable Stream -->
+<div class="flex-1 overflow-y-auto p-3 space-y-2.5">
+<!-- Feed Card 1: Reroute Action (Insulin Batch) -->
+<div class="bg-surface-container/60 hover:bg-surface-container-high/80 transition-all rounded-xl p-3 shadow-md relative overflow-hidden group">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-secondary"></div>
+<div class="flex items-center justify-between pl-1">
+<div class="flex items-center gap-1.5">
+<span class="px-1.5 py-0.5 rounded bg-secondary-container text-on-secondary font-label-caps text-[9px] font-bold">REROUTE</span>
+<span class="font-telemetry-value text-telemetry-value text-on-surface font-bold">#TK-902</span>
+</div>
+<span class="font-telemetry-timestamp text-telemetry-timestamp text-on-surface-variant">04:38:12Z</span>
+</div>
+<p class="font-body-sm text-[12px] text-on-surface mt-1.5 pl-1 leading-snug">
+            Shifted from <strong class="text-error font-medium">NH-75 Shiradi Ghat</strong> to <strong class="text-secondary font-medium">Charmadi Bypass</strong>.
+          </p>
+<div class="mt-2 pl-1 flex items-center justify-between text-[11px] font-telemetry-timestamp">
+<span class="text-primary font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">format_image_left</span>12.4 hrs flood block avoided
+            </span>
+<span class="text-on-surface-variant">+34 mins travel</span>
+</div>
+<div class="mt-2 pl-1 pt-2 flex items-center justify-between border-t border-surface-variant/30">
+<span class="px-1.5 py-0.5 rounded bg-surface-container-highest text-secondary font-label-caps text-[8px] tracking-wider">AI-WRITTEN / RULE-VALIDATED</span>
+<button class="text-primary hover:text-primary-fixed font-label-caps text-[10px] flex items-center">
+              LOG AUDIT <span class="material-symbols-outlined text-[12px] ml-0.5">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Feed Card 2: Hold Action (Agro Fresh) -->
+<div class="bg-surface-container/60 hover:bg-surface-container-high/80 transition-all rounded-xl p-3 shadow-md relative overflow-hidden group">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-secondary-fixed"></div>
+<div class="flex items-center justify-between pl-1">
+<div class="flex items-center gap-1.5">
+<span class="px-1.5 py-0.5 rounded bg-surface-variant text-on-surface-variant font-label-caps text-[9px] font-bold">HOLD STAGE</span>
+<span class="font-telemetry-value text-telemetry-value text-on-surface font-bold">#TK-118</span>
+</div>
+<span class="font-telemetry-timestamp text-telemetry-timestamp text-on-surface-variant">04:22:05Z</span>
+</div>
+<p class="font-body-sm text-[12px] text-on-surface-variant mt-1.5 pl-1 leading-snug">
+            Staged at Hassan Safe Depot until precipitation rates drop below 40mm/h. Fuel saving idle mode confirmed.
+          </p>
+<div class="mt-1.5 pl-1 flex items-center justify-between text-[11px] font-telemetry-timestamp text-on-surface-variant">
+<span>Payload: Agro Fresh Organics</span>
+<span class="text-secondary font-mono">T-45m RETEST</span>
+</div>
+</div>
+<!-- Feed Card 3: Escalate Action (Drone Protocol) -->
+<div class="bg-surface-container/60 hover:bg-surface-container-high/80 transition-all rounded-xl p-3 shadow-md relative overflow-hidden group">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-error animate-pulse"></div>
+<div class="flex items-center justify-between pl-1">
+<div class="flex items-center gap-1.5">
+<span class="px-1.5 py-0.5 rounded bg-error-container text-on-error-container font-label-caps text-[9px] font-bold animate-pulse">ESCALATE</span>
+<span class="font-telemetry-value text-telemetry-value text-error font-bold">#TK-410</span>
+</div>
+<span class="font-telemetry-timestamp text-telemetry-timestamp text-error">03:59:40Z</span>
+</div>
+<p class="font-body-sm text-[12px] text-on-surface mt-1.5 pl-1 leading-snug">
+            Landslide alert blocks secondary link. Emergency drone transfer payload dispatched for 4x O-Negative blood plasma packs.
+          </p>
+<div class="mt-2 pl-1 flex items-center justify-between text-[11px] font-telemetry-timestamp text-on-surface-variant">
+<span class="text-error font-medium">UAV Corridor Alpha Active</span>
+<span class="text-on-surface font-mono">18m to IXE Hospital</span>
+</div>
+</div>
+<!-- DECISION DRAWER PREVIEW: Multi-Factor AI Risk Decomposition -->
+<div class="bg-surface-container-lowest/80 rounded-xl p-3 shadow-lg">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">SHIRADI DISRUPTION FACTORS</span>
+<span class="text-[10px] font-telemetry-timestamp text-error font-bold">NET RISK: 91%</span>
+</div>
+<div class="grid grid-cols-2 gap-2 text-[11px] font-telemetry-timestamp">
+<!-- Soil Saturation -->
+<div class="bg-surface-container/80 p-2 rounded">
+<div class="flex justify-between text-on-surface-variant mb-1">
+<span>Soil Saturation</span>
+<span class="text-error font-bold">94%</span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-1">
+<div class="bg-error h-1 rounded-full" style="width: 94%"></div>
+</div>
+</div>
+<!-- Rainfall Intensity -->
+<div class="bg-surface-container/80 p-2 rounded">
+<div class="flex justify-between text-on-surface-variant mb-1">
+<span>Rain Intensity</span>
+<span class="text-error font-bold">88%</span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-1">
+<div class="bg-error h-1 rounded-full" style="width: 88%"></div>
+</div>
+</div>
+<!-- Terrain Slope Angle -->
+<div class="bg-surface-container/80 p-2 rounded">
+<div class="flex justify-between text-on-surface-variant mb-1">
+<span>Incline Stress</span>
+<span class="text-secondary font-bold">82%</span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-1">
+<div class="bg-secondary h-1 rounded-full" style="width: 82%"></div>
+</div>
+</div>
+<!-- Drainage Capacity -->
+<div class="bg-surface-container/80 p-2 rounded">
+<div class="flex justify-between text-on-surface-variant mb-1">
+<span>Drain Cap</span>
+<span class="text-primary font-bold">21%</span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-1">
+<div class="bg-primary h-1 rounded-full" style="width: 21%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Intelligence Footer Action Bar -->
+<div class="p-2.5 bg-surface-container-lowest/90 flex items-center justify-between gap-2">
+<button class="flex-1 py-1.5 px-3 rounded-lg bg-surface-container-high hover:bg-surface-variant text-on-surface font-headline-sm text-[12px] font-medium transition-all text-center">
+          Simulate Corridor Break
+        </button>
+<button class="flex-1 py-1.5 px-3 rounded-lg bg-primary-container text-on-primary font-headline-sm text-[12px] font-semibold transition-all text-center shadow-[0_0_12px_rgba(20,241,217,0.3)]">
+          Authorize Overrides
+        </button>
+</div>
+</div>
+</div>
+<!-- GUIDED CINEMATIC "SHOW ME" AUDIOVISUAL NARRATIVE BAR -->
+<div class="relative bg-surface-container-low/80 backdrop-blur-2xl rounded-xl p-3 shadow-xl flex flex-col md:flex-row items-center justify-between gap-4 overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-primary-container"></div>
+<!-- Narrative Play State & Live Subtitle -->
+<div class="flex items-center gap-3 w-full md:w-auto">
+<button class="w-10 h-10 rounded-xl bg-primary-container text-on-primary flex items-center justify-center shrink-0 shadow-[0_0_16px_rgba(20,241,217,0.35)] hover:scale-105 transition-transform" title="Pause / Play Scenario Walkthrough">
+<span class="material-symbols-outlined text-[20px]">pause</span>
+</button>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="px-1.5 py-0.2 rounded bg-secondary-container/50 text-secondary font-label-caps text-[8px] font-mono">SCENARIO WALKTHROUGH • STEP 2 OF 4</span>
+<span class="font-telemetry-timestamp text-[10px] text-primary">02:14 / 04:30</span>
+</div>
+<p class="font-body-md text-[13px] text-on-surface truncate md:text-wrap leading-tight mt-0.5">
+<strong class="text-primary font-semibold">Autonomous Agent:</strong> "91% landslide probability detected on Shiradi Ghat. Dynamic diversion active via Charmadi Bypass for Life-Saving Insulin batch #TK-902..."
+        </p>
+</div>
+</div>
+<!-- Quick Context Actions -->
+<div class="flex items-center gap-2 w-full md:w-auto justify-end shrink-0">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-body-sm text-[12px] font-medium transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-secondary">psychology</span>
+        Inspect Decision
+      </button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-body-sm text-[12px] font-medium transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-primary">compare_arrows</span>
+        Toggle Baseline
+      </button>
+<button class="p-1.5 rounded-lg bg-surface-container text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" title="Audio narration toggle">
+<span class="material-symbols-outlined text-[18px]">volume_up</span>
+</button>
+</div>
+</div>
+</div>
+<script>
+  // Simple reactive tick simulation for mission telemetry
+  (function initDashboardInteractions() {
+    // Pulse animation or live telemetry mock updates
+    const reroutePath = document.getElementById('dynamic-reroute');
+    if (reroutePath) {
+      let offset = 0;
+      setInterval(() => {
+        offset = (offset + 1) % 40;
+        reroutePath.style.strokeDashoffset = -offset;
+      }, 50);
+    }
+  })();
+</script></main></div>
+
+</body></html>

@@ -1,0 +1,41 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "satellite": "Sentinel-1 SAR C-Band",
+        "passHour": 18,
+        "correlatedEdgeId": "HAS-MNG",
+        "surfaceWaterConfidence": 0.95
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              75.6,
+              12.85
+            ],
+            [
+              75.8,
+              12.95
+            ],
+            [
+              75.85,
+              12.88
+            ],
+            [
+              75.65,
+              12.78
+            ],
+            [
+              75.6,
+              12.85
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

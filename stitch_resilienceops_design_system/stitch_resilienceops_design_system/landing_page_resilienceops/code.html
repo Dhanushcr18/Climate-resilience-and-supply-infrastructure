@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ResilienceOps — Extreme Weather Freight Corridor Rerouting</title>
+<!-- Tailwind CSS v3 CDN with forms & container queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#F0F5FE',
+              100: '#E1EDFD',
+              500: '#2E74F2',
+              600: '#1F5FD6',
+              700: '#184CAE',
+              900: '#0E2E69'
+            },
+            neutral: {
+              50: '#F9FAFB',
+              100: '#F3F4F6',
+              200: '#E5E7EB',
+              300: '#D1D5DB',
+              400: '#9CA3AF',
+              500: '#6B7280',
+              600: '#4B5563',
+              700: '#374151',
+              800: '#1F2937',
+              900: '#111827'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+            mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+<!-- Grouped CSS: System Typography & Custom Borders -->
+<style data-purpose="base-enhancements">
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      background-color: #FFFFFF;
+      color: #111827;
+    }
+    .dashed-blocked-path {
+      stroke-dasharray: 6 4;
+      animation: dash 35s linear infinite;
+    }
+    @keyframes dash {
+      to {
+        stroke-dashoffset: -100;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col font-sans bg-white text-neutral-900 selection:bg-blue-100 selection:text-brand-900">
+<!-- BEGIN: MainHeader -->
+<header class="sticky top-0 z-40 bg-white border-b border-[#E3E6EB] h-[56px] flex items-center">
+<div class="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+<!-- Brand Logo & Wordmark -->
+<a aria-label="ResilienceOps Home" class="flex items-center gap-2.5 focus:outline-none focus:ring-2 focus:ring-brand-600 rounded p-1" href="#">
+<!-- Geometric Node Network Icon matching screenshot -->
+<div class="w-6 h-6 flex items-center justify-center text-brand-600">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<circle cx="18" cy="5" r="3"></circle>
+<circle cx="6" cy="12" r="3"></circle>
+<circle cx="18" cy="19" r="3"></circle>
+<line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line>
+<line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line>
+</svg>
+</div>
+<span class="text-[17px] font-semibold tracking-tight text-neutral-900">ResilienceOps</span>
+</a>
+<!-- Center Navigation Links -->
+<nav aria-label="Main Navigation" class="hidden md:flex items-center space-x-8 text-sm font-medium text-neutral-600">
+<a class="hover:text-neutral-900 transition-colors" href="#how-it-works">How it works</a>
+<a class="hover:text-neutral-900 transition-colors" href="#what-it-protects">Impact</a>
+<a class="hover:text-neutral-900 transition-colors flex items-center gap-1.5" href="#simulation">
+<span>Replay Kerala 2018</span>
+<span class="px-1.5 py-0.5 text-[10px] font-medium tracking-wide uppercase bg-neutral-100 text-neutral-600 border border-neutral-200 rounded">Simulation</span>
+</a>
+</nav>
+<!-- Right CTAs -->
+<div class="flex items-center space-x-3">
+<a class="inline-flex items-center justify-center px-3.5 py-1.5 text-sm font-medium rounded-md text-white bg-brand-600 hover:bg-brand-700 transition shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-600" href="#simulation">
+          Open control room
+        </a>
+</div>
+</div>
+</header>
+<!-- END: MainHeader -->
+<!-- BEGIN: HeroSection -->
+<main class="flex-grow">
+<section class="py-12 lg:py-20 border-b border-[#E3E6EB] bg-white">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+<!-- Left Hero Column (60%) -->
+<div class="lg:col-span-7 flex flex-col justify-center">
+<!-- Real-time operational note badge -->
+<div class="inline-flex items-center gap-2 mb-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded text-xs font-mono font-medium bg-amber-50 text-amber-800 border border-amber-200/80">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500 mr-1.5 animate-pulse"></span>
+                Ghat corridors monitored: NH75, SH88, NH766
+              </span>
+</div>
+<!-- Headline -->
+<h1 class="text-3xl sm:text-4xl lg:text-[40px] font-semibold text-neutral-900 tracking-tight leading-[1.18]">
+              See the flood before the road does.
+            </h1>
+<!-- Subtext -->
+<p class="mt-4 text-lg text-neutral-600 leading-relaxed max-w-2xl">
+              ResilienceOps forecasts which freight corridors will become unsafe and reroutes medicine, food, and fuel trucks before they get stranded.
+            </p>
+<!-- Call to Actions -->
+<div class="mt-8 flex flex-wrap items-center gap-3.5">
+<a class="inline-flex items-center justify-center px-5 py-2.5 rounded-md text-sm font-medium text-white bg-brand-600 hover:bg-brand-700 transition shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-600" href="#simulation">
+                Open control room
+              </a>
+<a class="inline-flex items-center justify-center px-4 py-2.5 rounded-md text-sm font-medium text-neutral-700 bg-white hover:bg-neutral-50 border border-neutral-300 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-400" href="#how-it-works">
+<svg class="w-4 h-4 mr-2 text-neutral-500" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<polygon points="5 3 19 12 5 21 5 3"></polygon>
+</svg>
+                Watch 60-second walkthrough
+              </a>
+</div>
+<!-- Credibility Note -->
+<div class="mt-8 pt-6 border-t border-neutral-100 flex items-center text-xs text-neutral-500">
+<svg class="w-4 h-4 mr-2 text-neutral-400 flex-shrink-0" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>Built for disaster logistics dispatchers during extreme weather events.</span>
+</div>
+</div>
+<!-- Right Hero Column: UI Card Corridor Map Mockup (40%) -->
+<div class="lg:col-span-5" data-purpose="hero-map-mockup">
+<div class="bg-neutral-50 border border-neutral-200 rounded-lg p-3 sm:p-4 shadow-sm">
+<!-- Card mini-header showing vehicle status tag -->
+<div class="bg-white border border-neutral-200 rounded-md p-3 mb-3 flex items-start justify-between">
+<div>
+<div class="flex items-center gap-2">
+<span class="font-mono text-xs font-semibold text-neutral-700 bg-neutral-100 px-1.5 py-0.5 rounded">TRK-001</span>
+<span class="text-xs font-semibold text-neutral-900">Insulin &amp; plasma</span>
+<span class="inline-flex items-center text-[11px] font-medium text-blue-700 bg-blue-50 border border-blue-200 px-1.5 rounded">Rerouted</span>
+</div>
+<div class="text-[12px] text-neutral-500 mt-1 flex items-center">
+<span>Bengaluru</span>
+<svg class="w-3 h-3 mx-1 text-neutral-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span>Mangaluru</span>
+</div>
+</div>
+<span class="px-2 py-0.5 text-[11px] font-medium text-rose-700 bg-rose-50 border border-rose-200 rounded">
+                  Critical
+                </span>
+</div>
+<!-- Interactive-feel Graphic Map Canvas -->
+<div class="relative bg-white border border-neutral-200 rounded-md overflow-hidden aspect-[4/3] flex items-center justify-center">
+<!-- Schematic SVG Map of Hassan, Madikeri, Mangaluru, Mysuru -->
+<svg aria-label="Active corridor reroute map illustration" class="w-full h-full bg-[#FAFAFB]" viewbox="0 0 400 300">
+<!-- River / Terrain hints -->
+<path d="M 20,40 Q 50,60 30,120 T 40,220" fill="none" stroke="#E2E8F0" stroke-linecap="round" stroke-width="2"></path>
+<path d="M 50,20 Q 80,70 60,150 T 70,260" fill="none" stroke="#EDF2F7" stroke-width="1.5"></path>
+<!-- Secondary connected roads -->
+<line stroke="#CBD5E1" stroke-width="2" x1="280" x2="360" y1="210" y2="180"></line>
+<line stroke="#CBD5E1" stroke-linecap="round" stroke-width="2" x1="160" x2="280" y1="230" y2="210"></line>
+<line stroke="#CBD5E1" stroke-width="1.5" x1="80" x2="160" y1="120" y2="230"></line>
+<line stroke="#CBD5E1" stroke-width="2" x1="280" x2="340" y1="210" y2="90"></line>
+<!-- Blocked Route (Red Dashed) via Hassan / Shiradi Ghat -->
+<path class="dashed-blocked-path" d="M 80,120 L 220,90" fill="none" stroke="#DC2626" stroke-width="3.5"></path>
+<!-- Recommended Route (Green Solid) via Madikeri -->
+<path d="M 80,120 L 180,190 L 280,170" fill="none" stroke="#059669" stroke-linejoin="round" stroke-width="3.5"></path>
+<!-- Nodes / Waypoints -->
+<!-- Mangaluru (Start/Dest Node) -->
+<circle cx="80" cy="120" fill="#111827" r="5.5"></circle>
+<text fill="#1F2937" font-size="11" font-weight="600" x="35" y="112">Mangaluru</text>
+<!-- Hassan (Risk Node) -->
+<circle cx="220" cy="90" fill="#DC2626" r="5"></circle>
+<text fill="#374151" font-size="11" font-weight="600" x="210" y="76">Hassan</text>
+<!-- Madikeri (Safe Junction) -->
+<circle cx="180" cy="190" fill="#059669" r="5"></circle>
+<text fill="#047857" font-size="11" font-weight="600" x="145" y="210">Madikeri</text>
+<!-- Mysuru -->
+<circle cx="280" cy="170" fill="#111827" r="5.5"></circle>
+<text fill="#1F2937" font-size="11" font-weight="600" x="290" y="174">Mysuru</text>
+<!-- Truck Current Position Indicator on safe pass -->
+<circle cx="225" cy="181" fill="#2E74F2" fill-opacity="0.2" r="7"></circle>
+<circle cx="225" cy="181" fill="#1F5FD6" r="4"></circle>
+</svg>
+<!-- Annotation Badges matching screenshot style -->
+<!-- Red Hazard Warning Callout -->
+<div class="absolute top-5 right-4 bg-neutral-900/90 backdrop-blur-sm text-white text-[10.5px] font-mono px-2 py-1 rounded shadow flex items-center gap-1.5 border border-neutral-700">
+<span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
+<span>Blocked: Shiradi (91% flood risk)</span>
+</div>
+<!-- Green Safe Alternative Callout -->
+<div class="absolute bottom-5 left-10 bg-emerald-950/90 backdrop-blur-sm text-emerald-100 text-[10.5px] font-mono px-2 py-1 rounded shadow flex items-center gap-1.5 border border-emerald-700/60">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+<span>Via Madikeri (+65m, safe)</span>
+</div>
+</div>
+<!-- Corridor Comparison Metric Strip -->
+<div class="mt-3 grid grid-cols-2 gap-2 text-xs">
+<div class="p-2 bg-white rounded border border-neutral-200">
+<span class="block text-[11px] text-neutral-400 font-mono">ORIGINAL (NH75)</span>
+<span class="font-semibold text-rose-700 mt-0.5 block">Blocked (91% risk)</span>
+<span class="text-[11px] text-neutral-500">ETA: Indefinite</span>
+</div>
+<div class="p-2 bg-emerald-50/70 rounded border border-emerald-200">
+<span class="block text-[11px] text-emerald-800 font-mono">RECOMMENDED (SH88)</span>
+<span class="font-semibold text-emerald-800 mt-0.5 block">+65 min (46% risk)</span>
+<span class="text-[11px] text-emerald-700">ETA: Safe window intact</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: HeroSection -->
+<!-- BEGIN: HowItWorksSection -->
+<section class="py-16 lg:py-24 bg-white border-b border-[#E3E6EB]" id="how-it-works">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Section Header -->
+<div class="max-w-2xl">
+<p class="text-xs font-mono font-semibold uppercase tracking-wider text-brand-600">Methodology</p>
+<h2 class="mt-1 text-2xl sm:text-3xl font-semibold tracking-tight text-neutral-900">
+            How it works
+          </h2>
+<p class="mt-2 text-base text-neutral-600 leading-relaxed">
+            A deterministic pipeline connecting real-time hydrologic models to corridor dispatch commands.
+          </p>
+</div>
+<!-- 4-step sequence cards -->
+<div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Step 1 -->
+<div class="p-6 bg-white rounded-lg border border-neutral-200 hover:border-neutral-300 transition shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+<div class="w-10 h-10 rounded-md bg-neutral-100 flex items-center justify-center text-neutral-700 mb-4 border border-neutral-200">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" viewbox="0 0 24 24">
+<path d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 00-9.78 2.096A4.001 4.001 0 003 15z" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M8 21l2-4m4 4l2-4" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="font-mono text-xs text-neutral-400 font-semibold mb-1">STEP 01</div>
+<h3 class="text-base font-semibold text-neutral-900 mb-2">Watch the rain forecast</h3>
+<p class="text-sm text-neutral-600 leading-relaxed">
+              Aggregates localized precipitation, basin-level runoff models, and hill catchment saturation trends.
+            </p>
+</div>
+<!-- Step 2 -->
+<div class="p-6 bg-white rounded-lg border border-neutral-200 hover:border-neutral-300 transition shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+<div class="w-10 h-10 rounded-md bg-neutral-100 flex items-center justify-center text-neutral-700 mb-4 border border-neutral-200">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" viewbox="0 0 24 24">
+<path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="font-mono text-xs text-neutral-400 font-semibold mb-1">STEP 02</div>
+<h3 class="text-base font-semibold text-neutral-900 mb-2">Score every road</h3>
+<p class="text-sm text-neutral-600 leading-relaxed">
+              Continuously assesses landslide risk, culvert overflows, and river crest thresholds along ghat passes.
+            </p>
+</div>
+<!-- Step 3 -->
+<div class="p-6 bg-white rounded-lg border border-neutral-200 hover:border-neutral-300 transition shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+<div class="w-10 h-10 rounded-md bg-neutral-100 flex items-center justify-center text-neutral-700 mb-4 border border-neutral-200">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" viewbox="0 0 24 24">
+<path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="font-mono text-xs text-neutral-400 font-semibold mb-1">STEP 03</div>
+<h3 class="text-base font-semibold text-neutral-900 mb-2">Reroute trucks early</h3>
+<p class="text-sm text-neutral-600 leading-relaxed">
+              Identifies viable alternate corridors before vehicles commit past critical bifurcation junctions.
+            </p>
+</div>
+<!-- Step 4 -->
+<div class="p-6 bg-white rounded-lg border border-neutral-200 hover:border-neutral-300 transition shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+<div class="w-10 h-10 rounded-md bg-neutral-100 flex items-center justify-center text-neutral-700 mb-4 border border-neutral-200">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" viewbox="0 0 24 24">
+<path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="font-mono text-xs text-neutral-400 font-semibold mb-1">STEP 04</div>
+<h3 class="text-base font-semibold text-neutral-900 mb-2">Tell the driver why</h3>
+<p class="text-sm text-neutral-600 leading-relaxed">
+              Delivers plain-language, high-contrast instructions with fuel battery buffers and safe delivery window margins.
+            </p>
+</div>
+</div>
+</div>
+</section>
+<!-- END: HowItWorksSection -->
+<!-- BEGIN: WhatItProtectsSection -->
+<section class="py-16 lg:py-24 bg-neutral-50/60 border-b border-[#E3E6EB]" id="what-it-protects">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Section Header -->
+<div class="max-w-2xl mb-12">
+<p class="text-xs font-mono font-semibold uppercase tracking-wider text-neutral-500">Critical Freight Classes</p>
+<h2 class="mt-1 text-2xl sm:text-3xl font-semibold tracking-tight text-neutral-900">
+            What it protects
+          </h2>
+<p class="mt-2 text-base text-neutral-600">
+            Designed for cargo with rigid expiration limits, cooling constraints, or life-or-death deadlines.
+          </p>
+</div>
+<!-- 3 Utilitarian Cards (8px radius, 1px border) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Card 1: Hospitals & clinics -->
+<article class="bg-white rounded-lg border border-[#E3E6EB] p-6 shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<span class="text-xs font-mono font-semibold text-neutral-400">CLASS 01</span>
+<span class="px-2 py-0.5 rounded text-[11px] font-medium bg-rose-50 text-rose-700 border border-rose-200">High Risk of Spoilage</span>
+</div>
+<h3 class="mt-4 text-lg font-semibold text-neutral-900">Hospitals &amp; clinics</h3>
+<p class="mt-2 text-sm text-neutral-600 leading-relaxed">
+                Cold-chain insulin, dialysis fluids, surgical supplies, and blood plasma with active auxiliary refrigeration limits.
+              </p>
+</div>
+<div class="mt-6 pt-4 border-t border-neutral-100 flex items-center justify-between text-xs text-neutral-500">
+<span>Reserve shelf: <strong>14 hours</strong></span>
+<span>Temp: <strong>2°–8°C</strong></span>
+</div>
+</article>
+<!-- Card 2: Food supply -->
+<article class="bg-white rounded-lg border border-[#E3E6EB] p-6 shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<span class="text-xs font-mono font-semibold text-neutral-400">CLASS 02</span>
+<span class="px-2 py-0.5 rounded text-[11px] font-medium bg-amber-50 text-amber-800 border border-amber-200">Isolation Prevention</span>
+</div>
+<h3 class="mt-4 text-lg font-semibold text-neutral-900">Food supply</h3>
+<p class="mt-2 text-sm text-neutral-600 leading-relaxed">
+                Grain stockpiles, potable bottled water, fresh produce convoys, and infant baby formula distribution into marooned taluks.
+              </p>
+</div>
+<div class="mt-6 pt-4 border-t border-neutral-100 flex items-center justify-between text-xs text-neutral-500">
+<span>Dry transit: <strong>Protected</strong></span>
+<span>Hub routing: <strong>Multi-point</strong></span>
+</div>
+</article>
+<!-- Card 3: Fuel & power -->
+<article class="bg-white rounded-lg border border-[#E3E6EB] p-6 shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<span class="text-xs font-mono font-semibold text-neutral-400">CLASS 03</span>
+<span class="px-2 py-0.5 rounded text-[11px] font-medium bg-blue-50 text-blue-800 border border-blue-200">Emergency Fueling</span>
+</div>
+<h3 class="mt-4 text-lg font-semibold text-neutral-900">Fuel &amp; power</h3>
+<p class="mt-2 text-sm text-neutral-600 leading-relaxed">
+                Bulk diesel fuel tankers specifically earmarked for hospital backup generators, cellular towers, and evacuation motorboats.
+              </p>
+</div>
+<div class="mt-6 pt-4 border-t border-neutral-100 flex items-center justify-between text-xs text-neutral-500">
+<span>Hazmat passes: <strong>Verified</strong></span>
+<span>Gradient limit: <strong>&lt; 9%</strong></span>
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- END: WhatItProtectsSection -->
+<!-- BEGIN: PastFloodSimulationSection -->
+<section class="py-16 lg:py-20 bg-white" id="simulation">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="bg-neutral-50 border border-neutral-200 rounded-lg p-6 sm:p-8 lg:p-10">
+<div class="max-w-3xl">
+<div class="flex items-center gap-2 mb-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono font-medium bg-neutral-200/80 text-neutral-700">
+                SIMULATION
+              </span>
+<span class="text-xs font-mono text-neutral-500">Event Dataset #KL-2018-08</span>
+</div>
+<h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-neutral-900">
+              Kerala monsoon, August 2018 (replay)
+            </h2>
+<p class="mt-3 text-base text-neutral-600 leading-relaxed">
+              Replay 14 actual relief convoys during the catastrophic 2018 floods. See how 18 hours of delays and 5 stranded trucks were avoided using automated road saturation scoring across the Western Ghats.
+            </p>
+<!-- Metrics bar -->
+<div class="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-4 border-y border-neutral-200 py-4 max-w-xl">
+<div>
+<span class="block text-2xl font-bold font-mono text-neutral-900">14</span>
+<span class="text-xs text-neutral-500">Active convoys</span>
+</div>
+<div>
+<span class="block text-2xl font-bold font-mono text-emerald-700">0</span>
+<span class="text-xs text-neutral-500">Stranded vehicles</span>
+</div>
+<div>
+<span class="block text-2xl font-bold font-mono text-neutral-900">-18.4 hrs</span>
+<span class="text-xs text-neutral-500">Cumulative delay saved</span>
+</div>
+</div>
+<div class="mt-8 flex flex-wrap items-center gap-4">
+<a class="inline-flex items-center justify-center px-5 py-2.5 rounded-md text-sm font-medium text-white bg-brand-600 hover:bg-brand-700 transition shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-600" href="#">
+<svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+                Launch simulation replay
+              </a>
+<span class="text-xs text-neutral-500 font-mono">Runs locally in browser canvas • No auth required</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: PastFloodSimulationSection -->
+</main>
+<!-- BEGIN: MainFooter -->
+<footer class="bg-white border-t border-[#E3E6EB] py-8 text-sm">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+<!-- Disclaimer text -->
+<p class="text-neutral-500 text-xs sm:text-sm">
+        ResilienceOps — Hackathon prototype. Rainfall scenarios and trucks are simulated.
+      </p>
+<!-- Clean footer links -->
+<div class="flex items-center space-x-6 text-xs sm:text-sm text-neutral-600 font-medium">
+<a class="hover:text-neutral-900 transition-colors" href="#simulation">Control room</a>
+<a class="hover:text-neutral-900 transition-colors" href="#what-it-protects">Impact data</a>
+<a class="hover:text-neutral-900 transition-colors" href="#">Report issue</a>
+</div>
+</div>
+</footer>
+<!-- END: MainFooter -->
+</body></html>

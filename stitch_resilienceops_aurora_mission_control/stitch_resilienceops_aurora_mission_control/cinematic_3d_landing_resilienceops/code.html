@@ -1,0 +1,678 @@
+<!DOCTYPE html><html class="dark" lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_standard" name="shell-type"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-error-container":"#ffdad6","tertiary-fixed-dim":"#36d8fb","on-tertiary-container":"#00677a","background":"#11131a","surface-variant":"#32353c","on-secondary-container":"#b9aaff","surface-bright":"#373941","surface-container-lowest":"#0b0e15","error":"#ffb4ab","primary-container":"#14f1d9","surface-container-highest":"#32353c","error-container":"#93000a","outline":"#849490","on-secondary-fixed-variant":"#4816cb","secondary":"#cabeff","surface-tint":"#00dec8","inverse-primary":"#006b5f","tertiary":"#e2f8ff","outline-variant":"#3a4a47","primary-fixed-dim":"#00dec8","tertiary-fixed":"#aeecff","on-tertiary-fixed":"#001f26","inverse-on-surface":"#2e3038","surface-container-high":"#272a31","on-error":"#690005","primary-fixed":"#34fde4","surface-container":"#1d1f26","surface":"#11131a","on-tertiary":"#003641","on-secondary":"#31009a","on-tertiary-fixed-variant":"#004e5d","surface-container-low":"#191b22","on-secondary-fixed":"#1c0062","primary":"#c7fff3","on-surface-variant":"#b9cac6","on-primary":"#003731","inverse-surface":"#e1e2ec","secondary-fixed":"#e6deff","surface-dim":"#11131a","on-primary-fixed-variant":"#005047","tertiary-container":"#86e5ff","on-surface":"#e1e2ec","on-background":"#e1e2ec","secondary-fixed-dim":"#cabeff","on-primary-fixed":"#00201c","on-primary-container":"#00695e","secondary-container":"#4816cb"},borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},spacing:{"margin-md":"1.5rem","space-xs":"0.25rem",gutter:"1rem","space-lg":"1.5rem","space-sm":"0.5rem","space-xl":"2.5rem",margin:"1rem","margin-lg":"2rem","gutter-lg":"1.5rem","space-md":"1rem"},fontFamily:{"headline-lg":["Space Grotesk"],"headline-md":["Space Grotesk"],"display-hero-mobile":["Space Grotesk"],"body-md":["Inter"],"headline-sm":["Space Grotesk"],"headline-lg-mobile":["Space Grotesk"],"display-hero":["Space Grotesk"],"telemetry-metric":["JetBrains Mono"],"label-caps":["JetBrains Mono"],"body-sm":["Inter"],"telemetry-value":["JetBrains Mono"],"body-lg":["Inter"],"telemetry-timestamp":["JetBrains Mono"]},fontSize:{"headline-lg":["32px",{lineHeight:"40px",letterSpacing:"-0.01em",fontWeight:"600"}],"headline-md":["22px",{lineHeight:"30px",letterSpacing:"-0.005em",fontWeight:"600"}],"display-hero-mobile":["32px",{lineHeight:"40px",letterSpacing:"-0.01em",fontWeight:"700"}],"body-md":["14px",{lineHeight:"20px",letterSpacing:"-0.005em",fontWeight:"400"}],"headline-sm":["18px",{lineHeight:"26px",letterSpacing:"0em",fontWeight:"500"}],"headline-lg-mobile":["24px",{lineHeight:"32px",letterSpacing:"0em",fontWeight:"600"}],"display-hero":["48px",{lineHeight:"56px",letterSpacing:"-0.02em",fontWeight:"700"}],"telemetry-metric":["28px",{lineHeight:"32px",letterSpacing:"-0.03em",fontWeight:"600"}],"label-caps":["10px",{lineHeight:"12px",letterSpacing:"0.12em",fontWeight:"600"}],"body-sm":["12px",{lineHeight:"18px",letterSpacing:"0em",fontWeight:"400"}],"telemetry-value":["14px",{lineHeight:"18px",letterSpacing:"0em",fontWeight:"500"}],"body-lg":["16px",{lineHeight:"24px",letterSpacing:"-0.01em",fontWeight:"400"}],"telemetry-timestamp":["11px",{lineHeight:"14px",letterSpacing:"0.06em",fontWeight:"400"}]}}}};</script></head><body class="bg-background font-body-md text-body-md text-on-surface min-h-screen selection:bg-primary-container selection:text-on-primary-container bg-[radial-gradient(circle_at_50%_0%,rgba(20,241,217,0.06),transparent_50%)]"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/80 backdrop-blur-2xl shadow-[0_1px_12px_rgba(0,0,0,0.5)]"><div class="h-16 w-full px-gutter flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-md"><img alt="ResilienceOps Aurora Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrBIBCoRenOzPasJW8mAVtXbbapZphAO2pwp1tVj6LIiSV4IKYlCW-qvkq8mEAiW8TVS2Fe_Jot16w3peYA9THSSLq4We7BIibIN34vJOJxU3zsNZb0NXc_kD27iTToK4TCm6jImTl_o-tHIetsvTUEABN_9LveE8lmcnHaY2xaJbnLGRg5SynL-2ZSLfXk3zCZFQi3CS_KDamvTK_EULFZ8BKjexL3dCeECFyJ_DePpCg"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-primary tracking-tight font-semibold">ResilienceOps</span><span class="px-space-xs py-0.5 rounded-full bg-secondary-container/40 text-on-secondary-container font-label-caps text-label-caps border border-secondary/30">v2.4 AUTONOMOUS CORE</span></div></div><nav class="hidden md:flex items-center gap-1 p-1 bg-surface-container-low/60 rounded-xl"><a class="px-3 py-1.5 rounded-lg font-body-sm text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="mission-control" href="#">Mission Control</a><a aria-current="page" class="px-3 py-1.5 rounded-md font-body-sm font-semibold transition-colors bg-primary-container/10 text-primary-container border-b-2 border-primary-container shadow-[0_0_16px_rgba(20,241,217,0.35)]" data-path="cinematic-landing" href="#">Cinematic Landing</a><a class="px-3 py-1.5 rounded-lg font-body-sm text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="shipment-telemetry" href="#">Shipment Telemetry</a><a class="px-3 py-1.5 rounded-lg font-body-sm text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="driver-view" href="#">Driver View</a><a class="px-3 py-1.5 rounded-lg font-body-sm text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" data-path="about-model-transparency" href="#">Model Transparency</a></nav><div class="flex items-center gap-space-sm"><button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary-container text-on-primary font-headline-sm text-[13px] font-semibold tracking-wide shadow-[0_0_16px_rgba(20,241,217,0.35)] hover:shadow-[0_0_24px_rgba(20,241,217,0.5)] transition-all cursor-pointer"><span class="material-symbols-outlined text-[16px]">play_circle</span>Show Me</button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0 cursor-pointer"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="relative pt-16 min-h-screen bg-transparent w-full px-gutter"><div class="flex flex-col w-full text-on-surface">
+<!-- ==================== HERO SECTION WITH 3D CANVAS ==================== -->
+<section class="relative w-full -mt-16 pt-24 pb-20 overflow-hidden flex flex-col justify-between min-h-[720px]">
+<!-- Three.js 3D Globe Interactive Background -->
+<!-- STITCH_THREEJS_START:ANIMATION_2 class="absolute inset-0 w-full h-[680px] bg-transparent pointer-events-auto" -->
+<div class="absolute inset-0 w-full h-[680px] bg-transparent pointer-events-auto" style="display:block;">
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+<div id="threejs-container-ANIMATION_2" style="width:100%;height:100%"><canvas width="1600" height="3487" style="display: block; width: 1280px; height: 2790px;"></canvas></div>
+<script>
+(function() {
+  const container = document.getElementById('threejs-container-ANIMATION_2');
+  const devicePixelRatio = window.devicePixelRatio || 1;
+  // Three.js interactive 3D Globe & Supply Route Network Scene for ResilienceOps
+const width = container.clientWidth || window.innerWidth;
+const height = container.clientHeight || window.innerHeight;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
+camera.position.set(0, 5, 26);
+
+const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: "high-performance" });
+renderer.setSize(width, height);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+container.appendChild(renderer.domElement);
+
+// Lighting
+const ambientLight = new THREE.AmbientLight(0x0f172a, 2.5);
+scene.add(ambientLight);
+
+const dirLight1 = new THREE.DirectionalLight(0x14f1d9, 2.0);
+dirLight1.position.set(15, 20, 15);
+scene.add(dirLight1);
+
+const dirLight2 = new THREE.DirectionalLight(0x8b7cff, 1.8);
+dirLight2.position.set(-15, -10, 10);
+scene.add(dirLight2);
+
+// Center 3D Globe / Tactical Geospatial Sphere
+const globeGroup = new THREE.Group();
+scene.add(globeGroup);
+
+// Wireframe globe
+const globeGeo = new THREE.SphereGeometry(9, 48, 48);
+const globeMat = new THREE.MeshPhongMaterial({
+  color: 0x05070d,
+  emissive: 0x091428,
+  wireframe: false,
+  shininess: 30,
+  transparent: true,
+  opacity: 0.92
+});
+const globeMesh = new THREE.Mesh(globeGeo, globeMat);
+globeGroup.add(globeMesh);
+
+// Outer grid lattice
+const wireGeo = new THREE.WireframeGeometry(new THREE.SphereGeometry(9.08, 28, 28));
+const wireMat = new THREE.LineBasicMaterial({ color: 0x14f1d9, transparent: true, opacity: 0.18 });
+const wireLines = new THREE.LineSegments(wireGeo, wireMat);
+globeGroup.add(wireLines);
+
+// Atmosphere halo glow ring
+const ringGeo = new THREE.RingGeometry(9.4, 11.2, 64);
+const ringMat = new THREE.MeshBasicMaterial({
+  color: 0x14f1d9,
+  side: THREE.DoubleSide,
+  transparent: true,
+  opacity: 0.12
+});
+const ringMesh = new THREE.Mesh(ringGeo, ringMat);
+ringMesh.rotation.x = Math.PI / 2.3;
+globeGroup.add(ringMesh);
+
+// Key Telemetry City Nodes (India / Regional Hubs coordinate simulation)
+const cityCoords = [
+  { name: 'Kochi Hub', lat: 9.93, lon: 76.26, color: 0x22e3a0, size: 0.35, highRisk: false },
+  { name: 'Bengaluru DC', lat: 12.97, lon: 77.59, color: 0x3ddcff, size: 0.4, highRisk: false },
+  { name: 'Mangaluru Port', lat: 12.91, lon: 74.85, color: 0xff3b5c, size: 0.45, highRisk: true },
+  { name: 'Chennai Terminal', lat: 13.08, lon: 80.27, color: 0x8b7cff, size: 0.35, highRisk: false },
+  { name: 'Kozhikode Dep', lat: 11.25, lon: 75.78, color: 0xff8a3d, size: 0.35, highRisk: true },
+  { name: 'Coimbatore Hub', lat: 11.01, lon: 76.95, color: 0x22e3a0, size: 0.3, highRisk: false },
+  { name: 'Mumbai Primary', lat: 19.07, lon: 72.87, color: 0x3ddcff, size: 0.4, highRisk: false }
+];
+
+function latLonToVec3(lat, lon, radius) {
+  const phi = (90 - lat) * (Math.PI / 180);
+  const theta = (lon + 180) * (Math.PI / 180);
+  const x = -(radius * Math.sin(phi) * Math.cos(theta));
+  const z = (radius * Math.sin(phi) * Math.sin(theta));
+  const y = (radius * Math.cos(phi));
+  return new THREE.Vector3(x, y, z);
+}
+
+const nodePoints = [];
+const nodeMeshList = [];
+
+cityCoords.forEach((city) => {
+  const pos = latLonToVec3(city.lat, city.lon, 9.15);
+  nodePoints.push(pos);
+
+  const nodeGeo = new THREE.SphereGeometry(city.size, 16, 16);
+  const nodeMat = new THREE.MeshBasicMaterial({ color: city.color });
+  const nodeMesh = new THREE.Mesh(nodeGeo, nodeMat);
+  nodeMesh.position.copy(pos);
+  globeGroup.add(nodeMesh);
+  nodeMeshList.push(nodeMesh);
+
+  // Pulse ring around high risk nodes
+  if (city.highRisk) {
+    const pulseRingGeo = new THREE.RingGeometry(city.size * 1.3, city.size * 2.2, 24);
+    const pulseRingMat = new THREE.MeshBasicMaterial({ color: city.color, side: THREE.DoubleSide, transparent: true, opacity: 0.6 });
+    const pulseRing = new THREE.Mesh(pulseRingGeo, pulseRingMat);
+    pulseRing.position.copy(pos);
+    pulseRing.lookAt(pos.clone().multiplyScalar(2));
+    globeGroup.add(pulseRing);
+  }
+});
+
+// Arcs connecting city nodes (Routes)
+const routes = [
+  { start: 0, end: 1, color: 0x14f1d9, elevated: 1.8 }, // Kochi -> Blr
+  { start: 1, end: 2, color: 0xff3b5c, elevated: 2.2 }, // Blr -> Mangaluru (Blocked Shiradi Ghat)
+  { start: 1, end: 3, color: 0x8b7cff, elevated: 1.5 }, // Blr -> Chennai
+  { start: 0, end: 4, color: 0xff8a3d, elevated: 1.6 }, // Kochi -> Kozhikode
+  { start: 4, end: 5, color: 0x22e3a0, elevated: 1.4 }, // Kozhikode -> Coimbatore
+  { start: 0, end: 5, color: 0x14f1d9, elevated: 1.5 }, // Kochi -> Coimbatore
+  { start: 2, end: 6, color: 0x3ddcff, elevated: 2.5 }, // Mangaluru -> Mumbai
+  // Dynamic Reroute Arc: bypassing Shiradi Ghat around coastal plain
+  { start: 0, end: 2, color: 0x14f1d9, elevated: 2.8, isReroute: true }
+];
+
+const pulses = [];
+
+routes.forEach((r) => {
+  const p1 = nodePoints[r.start];
+  const p2 = nodePoints[r.end];
+  
+  // Midpoint elevated outward
+  const mid = p1.clone().add(p2).multiplyScalar(0.5);
+  const distance = p1.distanceTo(p2);
+  mid.normalize().multiplyScalar(9.15 + (r.elevated || distance * 0.35));
+
+  const curve = new THREE.QuadraticBezierCurve3(p1, mid, p2);
+  const curvePoints = curve.getPoints(40);
+  const lineGeo = new THREE.BufferGeometry().setFromPoints(curvePoints);
+  const lineMat = new THREE.LineBasicMaterial({
+    color: r.color,
+    transparent: true,
+    opacity: r.isReroute ? 0.95 : 0.65,
+    linewidth: 2
+  });
+  const arcLine = new THREE.Line(lineGeo, lineMat);
+  globeGroup.add(arcLine);
+
+  // Travelling photon beacon along each arc
+  const pulseGeo = new THREE.SphereGeometry(0.18, 12, 12);
+  const pulseMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
+  const pulseMesh = new THREE.Mesh(pulseGeo, pulseMat);
+  globeGroup.add(pulseMesh);
+  pulses.push({ mesh: pulseMesh, curve: curve, t: Math.random(), speed: 0.006 + Math.random() * 0.005 });
+});
+
+// Particle field (Atmospheric monsoon precipitation & space dust)
+const particleCount = 450;
+const particleGeo = new THREE.BufferGeometry();
+const particlePos = new Float32Array(particleCount * 3);
+const particleColors = new Float32Array(particleCount * 3);
+
+for (let i = 0; i < particleCount; i++) {
+  const r = 10 + Math.random() * 8;
+  const theta = Math.random() * Math.PI * 2;
+  const phi = Math.acos((Math.random() * 2) - 1);
+  
+  particlePos[i * 3] = r * Math.sin(phi) * Math.cos(theta);
+  particlePos[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
+  particlePos[i * 3 + 2] = r * Math.cos(phi);
+
+  // Aurora teal and violet tint
+  if (Math.random() > 0.5) {
+    particleColors[i * 3] = 0.08;
+    particleColors[i * 3 + 1] = 0.95;
+    particleColors[i * 3 + 2] = 0.85;
+  } else {
+    particleColors[i * 3] = 0.54;
+    particleColors[i * 3 + 1] = 0.48;
+    particleColors[i * 3 + 2] = 1.0;
+  }
+}
+
+particleGeo.setAttribute('position', new THREE.BufferAttribute(particlePos, 3));
+particleGeo.setAttribute('color', new THREE.BufferAttribute(particleColors, 3));
+const particleMat = new THREE.PointsMaterial({
+  size: 0.16,
+  vertexColors: true,
+  transparent: true,
+  opacity: 0.75
+});
+const particles = new THREE.Points(particleGeo, particleMat);
+globeGroup.add(particles);
+
+// Default orientation targeting South Asia / India
+globeGroup.rotation.y = -1.2;
+globeGroup.rotation.x = 0.35;
+
+// Interactive mouse parallax
+let targetRotX = 0.35;
+let targetRotY = -1.2;
+let mouseX = 0;
+let mouseY = 0;
+
+window.addEventListener('mousemove', (e) => {
+  mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+  mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+  targetRotY = -1.2 + mouseX * 0.4;
+  targetRotX = 0.35 - mouseY * 0.3;
+});
+
+// Render Loop
+let clock = 0;
+function animate() {
+  requestAnimationFrame(animate);
+  clock += 0.01;
+
+  // Gentle globe spin
+  globeGroup.rotation.y += (targetRotY - globeGroup.rotation.y) * 0.05 + 0.001;
+  globeGroup.rotation.x += (targetRotX - globeGroup.rotation.x) * 0.05;
+
+  // Animate travelling route pulses
+  pulses.forEach((p) => {
+    p.t += p.speed;
+    if (p.t > 1.0) p.t = 0;
+    const pt = p.curve.getPoint(p.t);
+    p.mesh.position.copy(pt);
+  });
+
+  // Slowly drift particles
+  particles.rotation.y += 0.0008;
+
+  renderer.render(scene, camera);
+}
+animate();
+
+// Resize handler
+window.addEventListener('resize', () => {
+  const w = container.clientWidth || window.innerWidth;
+  const h = container.clientHeight || window.innerHeight;
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+  renderer.setSize(w, h);
+});
+
+})();
+</script>
+</div>
+<!-- STITCH_THREEJS_END:ANIMATION_2 -->
+<!-- Deep Ambient Glow Overlays (No borders, pure depth) -->
+<div class="absolute -top-12 -left-20 w-96 h-96 rounded-full bg-primary-container/10 blur-[120px] pointer-events-none"></div>
+<div class="absolute top-1/3 -right-24 w-[32rem] h-[32rem] rounded-full bg-secondary-container/25 blur-[140px] pointer-events-none"></div>
+<div class="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-background via-background/80 to-transparent pointer-events-none"></div>
+<!-- Hero Content Overlay -->
+<div class="relative z-10 w-full max-w-7xl mx-auto flex flex-col justify-center h-full">
+<div class="max-w-2xl flex flex-col items-start gap-space-md">
+<!-- Eyebrow Badge -->
+<div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-high/80 backdrop-blur-md shadow-sm">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-container opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary-fixed"></span>
+</span>
+<span class="font-label-caps text-label-caps tracking-widest text-primary-fixed uppercase">Autonomous Climate Resilience Platform</span>
+<span class="text-on-surface-variant font-telemetry-timestamp text-telemetry-timestamp opacity-50">• LIVE SYS</span>
+</div>
+<!-- Headline -->
+<h1 class="font-display-hero text-display-hero text-on-surface tracking-tight leading-none">
+          See the flood <br>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-fixed via-primary-container to-secondary">before the road does.</span>
+</h1>
+<!-- Subheadline -->
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl leading-relaxed">
+          An autonomous agent that predicts climate disruption and dynamically reroutes critical medical and food logistics corridors hours before flash inundation closes primary arteries.
+        </p>
+<!-- CTA Action Buttons -->
+<div class="flex flex-wrap items-center gap-space-sm pt-2">
+<button class="flex items-center gap-2 px-6 py-3 rounded-lg bg-primary-container text-on-primary-container font-headline-sm text-headline-sm font-semibold shadow-[0_0_24px_rgba(20,241,217,0.35)] hover:shadow-[0_0_36px_rgba(20,241,217,0.6)] hover:bg-primary-fixed transition-all cursor-pointer" onclick="document.getElementById('pipeline-section').scrollIntoView({ behavior: 'smooth' })">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+            Launch Control Room
+          </button>
+<button class="flex items-center gap-2 px-5 py-3 rounded-lg bg-surface-container-highest/60 hover:bg-surface-container-highest/90 text-on-surface font-headline-sm text-headline-sm backdrop-blur-md transition-all cursor-pointer" id="story-trigger" onclick="playStoryModal()">
+<span class="material-symbols-outlined text-secondary text-[22px]" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+            Watch the 8s Story
+          </button>
+</div>
+<!-- Honesty Assurance Pill -->
+<div class="mt-4 flex items-center gap-2 text-on-surface-variant/70 font-label-caps text-label-caps bg-surface-container-lowest/50 px-3 py-1.5 rounded-full backdrop-blur-sm">
+<span class="material-symbols-outlined text-primary-container text-[14px]">verified</span>
+<span>24/24 Test Suite Verified</span>
+<span>•</span>
+<span>Zero-Key Offline Ready</span>
+<span>•</span>
+<span class="text-secondary">Modelled Estimates</span>
+</div>
+</div>
+</div>
+<!-- Live Telemetry Spark Strip (Right Float on desktop) -->
+<div class="hidden xl:flex absolute top-32 right-12 z-20 flex-col gap-space-xs w-72 p-4 rounded-xl bg-surface-container-low/75 backdrop-blur-xl shadow-xl">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">NH-44 SENSORY INTAKE</span>
+<span class="px-1.5 py-0.5 rounded bg-error-container/40 text-error font-telemetry-timestamp text-telemetry-timestamp font-semibold">SURGE DETECTED</span>
+</div>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-telemetry-metric text-telemetry-metric text-primary-fixed">142.6</span>
+<span class="font-telemetry-timestamp text-telemetry-timestamp text-on-surface-variant">mm/hr sat.</span>
+</div>
+<svg class="w-full h-10 mt-1" fill="none" viewBox="0 0 200 40">
+<path class="text-primary-container" d="M0,30 Q30,35 60,25 T120,15 T160,8 T200,2" stroke="currentColor" stroke-width="2"></path>
+<path class="text-primary-container/10" d="M0,30 Q30,35 60,25 T120,15 T160,8 T200,2 L200,40 L0,40 Z" fill="currentColor"></path>
+</svg>
+<div class="flex justify-between items-center text-on-surface-variant font-telemetry-timestamp text-telemetry-timestamp pt-1">
+<span>SOIL SAT: 94.2%</span>
+<span class="text-secondary">AI PRE-REROUTE ON</span>
+</div>
+</div>
+</section>
+<!-- ==================== 4-STAGE AUTONOMOUS PIPELINE ==================== -->
+<section class="w-full max-w-7xl mx-auto py-16 flex flex-col gap-space-lg" id="pipeline-section">
+<div class="flex flex-col sm:flex-row sm:items-end justify-between gap-space-sm">
+<div>
+<div class="flex items-center gap-2 font-label-caps text-label-caps text-secondary tracking-widest uppercase">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+          Autonomous Response Architecture
+        </div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mt-1">
+          From Sub-Surface Sensor to Machine Actuation
+        </h2>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-md">
+        Operating continuously across hyper-local highway corridors with zero human intervention required during initial flood-front convergence.
+      </p>
+</div>
+<!-- 4 Glowing Glass Modules -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Stage 1: SENSE -->
+<div class="group relative flex flex-col justify-between p-6 rounded-xl bg-surface-container-low/70 backdrop-blur-xl hover:bg-surface-container/80 transition-all shadow-md">
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded-full bg-surface-variant font-label-caps text-label-caps text-primary-fixed uppercase tracking-wider">STAGE 01</span>
+<span class="font-telemetry-timestamp text-telemetry-timestamp text-on-surface-variant">10Hz INGEST</span>
+</div>
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center text-primary-container shadow-inner">
+<span class="material-symbols-outlined text-[28px]">sensors</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">SENSE</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">
+              High-frequency rainfall telemetry &amp; soil moisture matric potential across 240+ telemetry highway nodes.
+            </p>
+</div>
+</div>
+<div class="mt-6 pt-4 bg-surface-container-lowest/30 rounded p-2.5 flex items-center justify-between font-telemetry-timestamp text-telemetry-timestamp">
+<span class="text-on-surface-variant">NODES ACTIVE</span>
+<span class="text-primary-container font-semibold">248 / 248 OK</span>
+</div>
+</div>
+<!-- Stage 2: PREDICT -->
+<div class="group relative flex flex-col justify-between p-6 rounded-xl bg-surface-container-low/70 backdrop-blur-xl hover:bg-surface-container/80 transition-all shadow-md">
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded-full bg-surface-variant font-label-caps text-label-caps text-secondary uppercase tracking-wider">STAGE 02</span>
+<span class="font-telemetry-timestamp text-telemetry-timestamp text-on-surface-variant">Δ 3.2 HOURS</span>
+</div>
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary shadow-inner">
+<span class="material-symbols-outlined text-[28px]">psychology</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">PREDICT</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">
+              Physics-informed landslide &amp; flash-flood risk neural weighting combining topsoil saturation with slope topology.
+            </p>
+</div>
+</div>
+<div class="mt-6 pt-4 bg-surface-container-lowest/30 rounded p-2.5 flex items-center justify-between font-telemetry-timestamp text-telemetry-timestamp">
+<span class="text-on-surface-variant">INUNDATION RISK</span>
+<span class="text-secondary font-semibold">97.8% PEAK</span>
+</div>
+</div>
+<!-- Stage 3: DECIDE -->
+<div class="group relative flex flex-col justify-between p-6 rounded-xl bg-surface-container-low/70 backdrop-blur-xl hover:bg-surface-container/80 transition-all shadow-md">
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded-full bg-surface-variant font-label-caps text-label-caps text-tertiary-fixed-dim uppercase tracking-wider">STAGE 03</span>
+<span class="font-telemetry-timestamp text-telemetry-timestamp text-on-surface-variant">A* CONSTRAINED</span>
+</div>
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center text-tertiary-fixed-dim shadow-inner">
+<span class="material-symbols-outlined text-[28px]">alt_route</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">DECIDE</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">
+              Real-time dynamic graph routing calculating delay penalty vs. cold-chain energy dissipation for pharma payloads.
+            </p>
+</div>
+</div>
+<div class="mt-6 pt-4 bg-surface-container-lowest/30 rounded p-2.5 flex items-center justify-between font-telemetry-timestamp text-telemetry-timestamp">
+<span class="text-on-surface-variant">ALT CORRIDORS</span>
+<span class="text-tertiary-fixed-dim font-semibold">3 GENERATED</span>
+</div>
+</div>
+<!-- Stage 4: ACT -->
+<div class="group relative flex flex-col justify-between p-6 rounded-xl bg-surface-container-low/70 backdrop-blur-xl hover:bg-surface-container/80 transition-all shadow-md">
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded-full bg-surface-variant font-label-caps text-label-caps text-error uppercase tracking-wider">STAGE 04</span>
+<span class="font-telemetry-timestamp text-telemetry-timestamp text-on-surface-variant">&lt; 400ms SLA</span>
+</div>
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center text-primary-fixed shadow-inner">
+<span class="material-symbols-outlined text-[28px]">bolt</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">ACT</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">
+              Autonomous M2M in-cab dispatch overrides &amp; micro-hub cold storage holds executed before state closures occur.
+            </p>
+</div>
+</div>
+<div class="mt-6 pt-4 bg-surface-container-lowest/30 rounded p-2.5 flex items-center justify-between font-telemetry-timestamp text-telemetry-timestamp">
+<span class="text-on-surface-variant">DISPATCH LATENCY</span>
+<span class="text-primary-fixed font-semibold">312ms DISPATCHED</span>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== QUANTIFIED IMPACT BAND ==================== -->
+<section class="w-full max-w-7xl mx-auto my-8">
+<div class="relative overflow-hidden rounded-2xl bg-surface-container p-8 sm:p-12 shadow-2xl flex flex-col gap-space-lg">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
+<div>
+<span class="font-label-caps text-label-caps text-primary-fixed uppercase tracking-wider">VERIFIED BENCHMARKS</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mt-1">Autonomous Impact Validation</h2>
+</div>
+<div class="px-3 py-1 rounded bg-surface-container-highest text-on-surface-variant font-label-caps text-label-caps flex items-center gap-1.5 self-start md:self-auto">
+<span class="material-symbols-outlined text-[14px]">analytics</span>
+          Modelled Scenario: Monsoonal Basin Western Ghats Corridor
+        </div>
+</div>
+<!-- Large Metrics Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
+<div class="flex flex-col p-6 rounded-xl bg-surface-container-low/90">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">DELAYS ELIMINATED</span>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="font-telemetry-metric text-display-hero text-primary-fixed">142.8</span>
+<span class="font-headline-sm text-headline-sm text-on-surface-variant">Hours</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">
+            Cumulative driver wait and roadblock stall time avoided across 18 dispatch lanes.
+          </p>
+<div class="mt-4 h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary-container rounded-full w-[88%]"></div>
+</div>
+</div>
+<div class="flex flex-col p-6 rounded-xl bg-surface-container-low/90">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">VACCINE &amp; COLD CHAIN INTEGRITY</span>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="font-telemetry-metric text-display-hero text-secondary">99.4%</span>
+<span class="font-headline-sm text-headline-sm text-secondary-fixed-dim">Nominal</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">
+            Maintained within strict 2°C - 8°C corridor without auxiliary cooling generator trip.
+          </p>
+<div class="mt-4 h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full w-[99.4%]"></div>
+</div>
+</div>
+<div class="flex flex-col p-6 rounded-xl bg-surface-container-low/90">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">CARGO SPOILAGE LOSS</span>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="font-telemetry-metric text-display-hero text-tertiary-fixed-dim">0</span>
+<span class="font-headline-sm text-headline-sm text-tertiary-fixed-dim">Incidents</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">
+            Zero payload loss recorded in high-risk zones during peak precipitation triggers.
+          </p>
+<div class="mt-4 h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-fixed-dim rounded-full w-full"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== WHO IT PROTECTS INTERACTIVE CARDS ==================== -->
+<section class="w-full max-w-7xl mx-auto py-16 flex flex-col gap-space-lg">
+<div class="flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-primary-fixed uppercase tracking-wider">MISSION DEFENSE TARGETS</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Who ResilienceOps Safeguards</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mt-1">
+        Logistical arteries that cannot afford to halt. Real-time predictive resilience tailored for essential life-support networks.
+      </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Card 1: Healthcare -->
+<div class="group flex flex-col rounded-2xl bg-surface-container-low/80 backdrop-blur-md overflow-hidden hover:bg-surface-container/90 transition-all shadow-xl">
+<div class="relative h-48 w-full overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="High-tech temperature-controlled pharmaceutical cold storage delivery vehicle driving through misty mountain terrain at twilight, glowing cyan sensor instrumentation overlays, photorealistic cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhb7zwN2i-3iGAuNo243tUGm-dR9fLhqisLjAOFs9_KOLzk6oBrTDybLLgcf7ZSYJ2twMlS0wBTbksKx5el5SVsIUj_QQheG4aDNyUDJ9_lZLS8zIfFrfbmKKuwLCzXt0TM_UT0Ts-AjF5KJ6FhOY-22nOnsDtL-Ghb3SX8fdPVEAoHpUbIKHzjvZd20GK11qoqQUfA4Oy8OeuwO7CM16WrD7Tc2aJWpFulywYhYL4">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low via-surface-container-low/40 to-transparent"></div>
+<span class="absolute top-4 left-4 px-2.5 py-1 rounded bg-surface-container-lowest/80 backdrop-blur-md text-primary-fixed font-label-caps text-label-caps uppercase">VITAL LOGISTICS</span>
+</div>
+<div class="p-6 flex flex-col justify-between flex-1 gap-4">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Critical Healthcare &amp; Insulin Supply Networks</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2 leading-relaxed">
+              Automated alternate routing preserves life-saving bio-pharmaceuticals from shelf-life expiration due to submerged culverts and sudden flash mountain debris.
+            </p>
+</div>
+<div class="flex items-center gap-2 text-primary-container font-telemetry-timestamp text-telemetry-timestamp pt-2">
+<span class="material-symbols-outlined text-[16px]">medical_services</span>
+<span>Sub-hourly cold reserve calculation active</span>
+</div>
+</div>
+</div>
+<!-- Card 2: Agritech -->
+<div class="group flex flex-col rounded-2xl bg-surface-container-low/80 backdrop-blur-md overflow-hidden hover:bg-surface-container/90 transition-all shadow-xl">
+<div class="relative h-48 w-full overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Modern agricultural freight trucks convoy hauling fresh produce along a damp highway enveloped in dense storm clouds, high resolution technical logistics telemetry display overlay" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPASyvPCZh8agNhZaG40J7V-ru2JK_tU6QfWA9Vb1_Zd12eDbp1SfIIaeZ46FbnPsO7i9hBo73L6mIMrWQaFETI24thRVEmMBMBj-l7fPQlGugX0Lo_SlJ8PvzCz72s3hFD4_k6r46CDJyf5vGu7Zf2kbApCECID61IOrCLGpIRrwAee6rmfWnTOaqksNy5rXoatI8LKGhNBuyUOs9Hg9GPbgTcvEOi2WXTYWV_wIE">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low via-surface-container-low/40 to-transparent"></div>
+<span class="absolute top-4 left-4 px-2.5 py-1 rounded bg-surface-container-lowest/80 backdrop-blur-md text-secondary font-label-caps text-label-caps uppercase">FOOD SECURITY</span>
+</div>
+<div class="p-6 flex flex-col justify-between flex-1 gap-4">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Farmer Produce &amp; Perishable Agritech Fleets</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2 leading-relaxed">
+              Prevents multi-ton perishable harvest write-offs by routing cargo directly toward regional processing hubs before primary transport causeways are cut off.
+            </p>
+</div>
+<div class="flex items-center gap-2 text-secondary font-telemetry-timestamp text-telemetry-timestamp pt-2">
+<span class="material-symbols-outlined text-[16px]">agriculture</span>
+<span>Micro-hub diversion protocol ready</span>
+</div>
+</div>
+</div>
+<!-- Card 3: Disaster Management -->
+<div class="group flex flex-col rounded-2xl bg-surface-container-low/80 backdrop-blur-md overflow-hidden hover:bg-surface-container/90 transition-all shadow-xl">
+<div class="relative h-48 w-full overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Disaster management operations control command center illuminated with multiple large monitors showing real-time 3D topography and emergency vehicle tracking during heavy rainstorm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1IyoSBRUT4xpkfrk9egpI6aGn5R-We3EfMEcPW60pXJsLr72JDFftoSD3QTqer8oBTFduLXqueEyolltgtGNu-OytrzBy_iRQDcbgNZaWPSexyjoFO5wa7oS3RQCmU7N_lNunqquwE15r6Mcy8NxiFKNUSiQ2A1gTrNlNlF0oofgDQQMEsVGBwsKf-QRiyuK8-rMQfL3aIXcUKCxhjvGie-icc7xqIFG79IJvhZyn">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low via-surface-container-low/40 to-transparent"></div>
+<span class="absolute top-4 left-4 px-2.5 py-1 rounded bg-surface-container-lowest/80 backdrop-blur-md text-tertiary-fixed-dim font-label-caps text-label-caps uppercase">CIVIC PROTECTION</span>
+</div>
+<div class="p-6 flex flex-col justify-between flex-1 gap-4">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Regional Disaster Management Authorities</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2 leading-relaxed">
+              Provides civil defense commanders (NDMA / SDMA) with predictive corridor clearance telemetry before public municipal advisories can be formatted.
+            </p>
+</div>
+<div class="flex items-center gap-2 text-tertiary-fixed-dim font-telemetry-timestamp text-telemetry-timestamp pt-2">
+<span class="material-symbols-outlined text-[16px]">shield</span>
+<span>Direct agency emergency broadcast webhook</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== CALL TO ACTION BANNER ==================== -->
+<section class="w-full max-w-7xl mx-auto my-12">
+<div class="relative rounded-3xl bg-surface-container-high/90 p-8 sm:p-16 overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl">
+<!-- Glow ambient background inside module -->
+<div class="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-primary-container/20 blur-[100px] pointer-events-none"></div>
+<div class="flex flex-col gap-2 max-w-xl z-10">
+<div class="flex items-center gap-2 font-label-caps text-label-caps text-primary-fixed uppercase tracking-wider">
+<span class="h-2 w-2 rounded-full bg-primary-fixed animate-ping"></span>
+          AUTONOMOUS DISPATCH SYSTEM OPERATIONAL
+        </div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">
+          Experience Autonomous Resilience in Action
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          Simulate a real-time landslide front, examine soil moisture divergence, and witness live agent rerouting across national logistics corridors.
+        </p>
+</div>
+<div class="z-10 flex flex-col sm:flex-row items-center gap-4 shrink-0 w-full sm:w-auto">
+<a class="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-primary-container text-on-primary-container font-headline-sm text-headline-sm font-semibold shadow-[0_0_28px_rgba(20,241,217,0.4)] hover:shadow-[0_0_40px_rgba(20,241,217,0.6)] hover:bg-primary-fixed transition-all cursor-pointer text-center" data-path="mission-control" href="#">
+<span>Enter Mission Control</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+<!-- ==================== 8-SECOND STORY MODAL (INTERACTIVE) ==================== -->
+<div class="fixed inset-0 z-50 bg-background/90 backdrop-blur-2xl flex items-center justify-center p-4 transition-opacity duration-300 opacity-0 pointer-events-none" id="story-modal">
+<div class="relative w-full max-w-2xl bg-surface-container-high rounded-2xl p-6 sm:p-8 flex flex-col gap-6 shadow-2xl">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="h-2.5 w-2.5 rounded-full bg-secondary"></span>
+<span class="font-label-caps text-label-caps uppercase tracking-wider text-secondary">8-Second Crisis Narrative</span>
+</div>
+<button class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer" onclick="closeStoryModal()">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Animated Progress Bar -->
+<div class="w-full bg-surface-container-highest h-1 rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full w-0 transition-all duration-[8000ms] ease-linear" id="story-progress"></div>
+</div>
+<!-- Narrative Beats -->
+<div class="flex flex-col gap-4 py-4 min-h-[160px] justify-center">
+<div class="flex flex-col gap-1 transition-all" id="beat-1">
+<span class="font-telemetry-timestamp text-telemetry-timestamp text-primary-fixed">T-00:00 • CLIMATE CONVERGENCE</span>
+<p class="font-headline-md text-headline-md text-on-surface">Unprecedented cloudburst drops 180mm rain along Ghat Pass 4.</p>
+</div>
+<div class="hidden flex-col gap-1 transition-all" id="beat-2">
+<span class="font-telemetry-timestamp text-telemetry-timestamp text-secondary">T+02:40 • PREDICTIVE INTERVENTION</span>
+<p class="font-headline-md text-headline-md text-on-surface">Soil saturation triggers landslide vector. ResilienceOps redirects cold-chain fleet 3 hours ahead.</p>
+</div>
+<div class="hidden flex-col gap-1 transition-all" id="beat-3">
+<span class="font-telemetry-timestamp text-telemetry-timestamp text-tertiary-fixed-dim">T+08:00 • MISSION SUCCESS</span>
+<p class="font-headline-md text-headline-md text-on-surface">Highway collapses. 40,000 insulin doses safely reach destination hospital via diversion Route B.</p>
+</div>
+</div>
+<div class="flex items-center justify-between pt-2">
+<span class="font-telemetry-timestamp text-telemetry-timestamp text-on-surface-variant">Real-time simulation speed: 1.0x</span>
+<button class="px-4 py-2 rounded-lg bg-surface-container text-on-surface font-body-sm text-body-sm hover:bg-surface-variant transition-colors cursor-pointer" onclick="closeStoryModal()">
+          Dismiss Story
+        </button>
+</div>
+</div>
+</div>
+<script>
+    let storyTimer = null;
+    let storyTimeouts = [];
+
+    function playStoryModal() {
+      const modal = document.getElementById('story-modal');
+      const progress = document.getElementById('story-progress');
+      const b1 = document.getElementById('beat-1');
+      const b2 = document.getElementById('beat-2');
+      const b3 = document.getElementById('beat-3');
+
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      modal.classList.add('opacity-100', 'pointer-events-auto');
+
+      // Reset state
+      progress.style.transitionDuration = '0ms';
+      progress.style.width = '0%';
+      b1.classList.remove('hidden');
+      b2.classList.add('hidden');
+      b3.classList.add('hidden');
+
+      // Kick off transition
+      setTimeout(() => {
+        progress.style.transitionDuration = '8000ms';
+        progress.style.width = '100%';
+      }, 50);
+
+      storyTimeouts.push(setTimeout(() => {
+        b1.classList.add('hidden');
+        b2.classList.remove('hidden');
+      }, 2600));
+
+      storyTimeouts.push(setTimeout(() => {
+        b2.classList.add('hidden');
+        b3.classList.remove('hidden');
+      }, 5400));
+
+      storyTimeouts.push(setTimeout(() => {
+        closeStoryModal();
+      }, 8500));
+    }
+
+    function closeStoryModal() {
+      const modal = document.getElementById('story-modal');
+      const progress = document.getElementById('story-progress');
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      modal.classList.remove('opacity-100', 'pointer-events-auto');
+      storyTimeouts.forEach(t => clearTimeout(t));
+      storyTimeouts = [];
+      progress.style.width = '0%';
+    }
+  </script>
+</div></main><footer class="w-full bg-surface-container-lowest/90 py-space-lg shadow-[0_-1px_12px_rgba(0,0,0,0.5)]"><div class="w-full px-gutter flex flex-col sm:flex-row items-center justify-between gap-space-sm font-telemetry-timestamp text-telemetry-timestamp text-on-surface-variant"><div>© 2025 ResilienceOps Core. Autonomous climate and logistics routing framework.</div><div class="flex items-center gap-space-md"><span class="text-primary">Deck.GL 3D Enabled</span><span class="text-secondary">Autopilot v2.4 Active</span></div></div></footer>
+
+</body></html>

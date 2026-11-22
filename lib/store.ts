@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { persist, createJSONStorage } from "zustand/middleware";
 import { ScenarioId } from "./sim/scenarios";
 import { Observation, SourceType } from "./detect/types";
 import { RegionId } from "./sim/network";
@@ -89,7 +90,24 @@ function broadcastSimSync(patch: Partial<SimStoreState>) {
   }
 }
 
-export const useSimStore = create<SimStoreState>((set) => ({
+const resilientStorage = {
+  getItem: (_name: string) => {
+    if (typeof window === "undefined") return null;
+    return window.localStorage.getItem(_name);
+  },
+  setItem: (name: string, value: string) => {
+    if (typeof window === "undefined") return;
+    window.localStorage.setItem(name, value);
+  },
+  removeItem: (name: string) => {
+    if (typeof window === "undefined") return;
+    window.localStorage.removeItem(name);
+  },
+};
+
+export const useSimStore = create<SimStoreState>()(
+  persist(
+    (set) => ({
   scenario: "kerala-2018",
   simT: 18,
   isPlaying: false,
@@ -281,7 +299,34 @@ export const useSimStore = create<SimStoreState>((set) => ({
     set(resetState);
     broadcastSimSync(resetState);
   },
-}));
+    }),
+    {
+      name: "resilienceops-sim-store",
+      storage: createJSONStorage(() => resilientStorage),
+      partialize: (state) => ({
+        scenario: state.scenario,
+        simT: state.simT,
+        isPlaying: state.isPlaying,
+        speed: state.speed,
+        mode: state.mode,
+        selectedRegion: state.selectedRegion,
+        selectedShipmentCode: state.selectedShipmentCode,
+        selectedEdgeId: state.selectedEdgeId,
+        selectedDecisionId: state.selectedDecisionId,
+        activeSidebarTab: state.activeSidebarTab,
+        truckFocusTarget: state.truckFocusTarget,
+        manualReroutedTrucks: state.manualReroutedTrucks,
+        showHeatmap: state.showHeatmap,
+        showRecommendedAlternate: state.showRecommendedAlternate,
+        theme: state.theme,
+        language: state.language,
+        detectionLayers: state.detectionLayers,
+        enabledSources: state.enabledSources,
+        userObservations: state.userObservations,
+      }),
+    }
+  )
+);
 
 // Initialize Cross-Tab Event Listener in Browser
 if (typeof window !== "undefined" && "BroadcastChannel" in window) {

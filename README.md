@@ -171,6 +171,16 @@ Ensures logistics operators instantly discern between high-hazard weather and tr
 └── tests/                       # 12 test suites (routing, risk, fusion, mid-route, impact, etc.)
 ```
 
+### Shared Server Database
+
+Control-room reports, reopened roads, simulation time, manual reroutes, and driver acknowledgements are persisted by the server at:
+
+- API: `GET/PUT/DELETE /api/simulation-state`
+- Default local database file: `data/simulation-state.json`
+- Optional override: `SIMULATION_DATABASE_PATH=/absolute/path/to/state.json`
+
+The browser also retains a localStorage fallback, but the server database is the source used to synchronize the dashboard and driver portals after refresh or across tabs. The default file-backed database is intended for local/self-hosted deployment. A serverless host with an ephemeral filesystem (for example, a stateless Vercel deployment) should use a managed persistent database and replace `lib/database/simulation.ts`.
+
 ---
 
 ## 6. Quickstart: Running Locally

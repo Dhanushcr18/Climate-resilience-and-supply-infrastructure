@@ -42,6 +42,8 @@ export default function DriverTerminalPage() {
     setTruckFocusTarget,
     language,
     setLanguage,
+    acknowledgedShipments,
+    acknowledgeShipment,
   } = useSimStore();
 
   // If initial URL has query `t`, synchronize with store
@@ -65,8 +67,10 @@ export default function DriverTerminalPage() {
 
   const currentHour = Math.min(72, Math.max(0, Math.floor(simT)));
 
-  const [acknowledged, setAcknowledged] = useState(false);
-  const [ackTime, setAckTime] = useState<string>("14:14");
+  const acknowledged = Boolean(acknowledgedShipments[code]);
+  const ackTime = acknowledgedShipments[code]?.acknowledgedAt
+    ? new Date(acknowledgedShipments[code].acknowledgedAt).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
+    : "14:14";
 
   // Run full simulation with multi-source evidence
   const simResult = useMemo(() => {
@@ -126,6 +130,9 @@ export default function DriverTerminalPage() {
   const currentRoadStatusMap = useMemo(() => {
     return simResult.roadStatusByHour?.get(currentHour);
   }, [simResult, currentHour]);
+  const currentEffectiveRiskMap = useMemo(() => {
+    return simResult.effectiveRisksByHour?.get(currentHour);
+  }, [simResult, currentHour]);
 
   const allObservations = useMemo(() => {
     return [...detectionSnapshot.observations, ...userObservations];
@@ -149,9 +156,7 @@ export default function DriverTerminalPage() {
   }, [code, truckSnapshot?.lat, truckSnapshot?.lng]);
 
   const handleAcknowledge = () => {
-    setAcknowledged(true);
-    const now = new Date();
-    setAckTime(now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }));
+    acknowledgeShipment(code, simT);
   };
 
   const handleCenterOnTruck = () => {
@@ -383,6 +388,7 @@ export default function DriverTerminalPage() {
               activeRoutePolyline={activeRoutePoly}
               originalRoutePolyline={originalRoutePoly}
               roadStatusMap={currentRoadStatusMap}
+              effectiveRiskMap={currentEffectiveRiskMap}
               satellitePolygons={detectionSnapshot.satellitePolygons}
               probeClusters={detectionSnapshot.probeClusters}
               sensorReadings={detectionSnapshot.sensorReadings}

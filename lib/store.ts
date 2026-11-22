@@ -34,6 +34,7 @@ interface SimStoreState {
   // Truck Focus & Live Relocation
   truckFocusTarget: { lat: number; lng: number; zoom?: number; code: string; timestamp: number } | null;
   manualReroutedTrucks: string[];
+  acknowledgedShipments: Record<string, { acknowledgedAt: string; simT: number }>;
 
   // View settings
   showHeatmap: boolean;
@@ -63,6 +64,7 @@ interface SimStoreState {
   setActiveSidebarTab: (tab: "corridors" | "fleet") => void;
   setTruckFocusTarget: (target: { lat: number; lng: number; zoom?: number; code: string; timestamp: number } | null) => void;
   toggleTruckManualReroute: (truckCode: string) => void;
+  acknowledgeShipment: (truckCode: string, simT: number) => void;
   setShowHeatmap: (show: boolean) => void;
   toggleRecommendedAlternate: () => void;
   toggleDetectionLayer: (layer: keyof DetectionLayerToggles) => void;
@@ -90,6 +92,8 @@ function broadcastSimSync(patch: Partial<SimStoreState>) {
   }
 }
 
+let hydratingFromServer = false;
+
 const resilientStorage = {
   getItem: (_name: string) => {
     if (typeof window === "undefined") return null;
@@ -98,6 +102,19 @@ const resilientStorage = {
   setItem: (name: string, value: string) => {
     if (typeof window === "undefined") return;
     window.localStorage.setItem(name, value);
+    if (hydratingFromServer) return;
+    try {
+      const parsed = JSON.parse(value) as { state?: Record<string, unknown> };
+      if (parsed.state) {
+        void fetch("/api/simulation-state", {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ state: parsed.state }),
+        }).catch(() => {});
+      }
+    } catch {
+      // Local storage remains available as an offline fallback.
+    }
   },
   removeItem: (name: string) => {
     if (typeof window === "undefined") return;
@@ -121,6 +138,7 @@ export const useSimStore = create<SimStoreState>()(
   activeSidebarTab: "fleet",
   truckFocusTarget: null,
   manualReroutedTrucks: [],
+  acknowledgedShipments: {},
 
   showHeatmap: true,
   showRecommendedAlternate: true,
@@ -227,6 +245,16 @@ export const useSimStore = create<SimStoreState>()(
         selectedShipmentCode: truckCode,
       };
     }),
+  acknowledgeShipment: (truckCode, simT) =>
+    set((state) => ({
+      acknowledgedShipments: {
+        ...state.acknowledgedShipments,
+        [truckCode]: {
+          acknowledgedAt: new Date().toISOString(),
+          simT,
+        },
+      },
+    })),
   setShowHeatmap: (showHeatmap) => set({ showHeatmap }),
   toggleRecommendedAlternate: () =>
     set((state) => ({ showRecommendedAlternate: !state.showRecommendedAlternate })),
@@ -316,6 +344,7 @@ export const useSimStore = create<SimStoreState>()(
         activeSidebarTab: state.activeSidebarTab,
         truckFocusTarget: state.truckFocusTarget,
         manualReroutedTrucks: state.manualReroutedTrucks,
+        acknowledgedShipments: state.acknowledgedShipments,
         showHeatmap: state.showHeatmap,
         showRecommendedAlternate: state.showRecommendedAlternate,
         theme: state.theme,
@@ -340,4 +369,28 @@ if (typeof window !== "undefined" && "BroadcastChannel" in window) {
   } catch (e) {
     // Graceful fallback
   }
+}
+
+// Server-backed shared state: initialize from the database and poll so every
+// control-room/driver tab converges even after refresh or BroadcastChannel loss.
+if (typeof window !== "undefined") {
+  let lastServerUpdate = "";
+
+  const hydrateFromServer = async () => {
+    try {
+      const response = await fetch("/api/simulation-state", { cache: "no-store" });
+      if (!response.ok) return;
+      const record = await response.json() as { state?: Record<string, unknown>; updatedAt?: string };
+      if (!record.state || record.updatedAt === lastServerUpdate) return;
+      lastServerUpdate = record.updatedAt || "";
+      hydratingFromServer = true;
+      useSimStore.setState(record.state);
+      hydratingFromServer = false;
+    } catch {
+      // Keep localStorage and the simulation usable if the server database is offline.
+    }
+  };
+
+  void hydrateFromServer();
+  window.setInterval(() => void hydrateFromServer(), 1500);
 }

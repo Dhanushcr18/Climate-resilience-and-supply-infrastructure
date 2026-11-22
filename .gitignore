@@ -28,3 +28,6 @@ dist/
 
 # Scratch & temporary files
 scratch/
+
+# Local server-backed simulation database
+data/
